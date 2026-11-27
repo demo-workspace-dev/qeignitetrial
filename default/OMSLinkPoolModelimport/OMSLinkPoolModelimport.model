@@ -1,0 +1,2254 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE focus-model [
+]>
+<!--A sample test model covering inventory reservation, order status, allow partial shipments, and warehouse fulfillment, plus 10 additional attributes.--><focus-model auxDataFilesFolder="" classifyAttributesEnabled="false" frea_ai_smart_comment="" inputOutput="false" manual="true">
+    <model-identification modelTag="@default @1 @default_Sample @agentic_generated">
+        <model-identification-field name="Application Name" partOfTag="true" value="default"/>
+        <model-identification-field name="Application code version #" partOfTag="true" value="1"/>
+        <model-identification-field name="Application Function" partOfTag="true" value="default_Sample"/>
+        <model-identification-field name="Updated Reason" partOfTag="false" value="New Model"/>
+        <model-identification-field name="Created By" partOfTag="false" value="dbhadra2_agentic"/>
+        <model-identification-field name="Created Date and Time" partOfTag="false" value="27 Nov 2026 06:21:34"/>
+        <model-identification-field name="Updated By" partOfTag="false" value="dbhadra2"/>
+        <model-identification-field name="Updated Date and Time" partOfTag="false" value="27 Nov 2026 11:39:12"/>
+        <model-identification-field name="Application Sub Function" partOfTag="true" value="agentic_generated"/>
+        <model-identification-field name="Test Stage" partOfTag="false" value=""/>
+        <model-identification-field name="Criticality" partOfTag="false" value=""/>
+        <model-identification-field name="Project" partOfTag="false" value=""/>
+        <model-identification-field name="Epic" partOfTag="false" value=""/>
+        <model-identification-field name="Feature" partOfTag="false" value=""/>
+        <model-identification-field name="User Story" partOfTag="false" value=""/>
+        <model-identification-field name="Git Comments" partOfTag="false" value=""/>
+        <model-identification-field name="Use attribute pool" partOfTag="false" value="true"/>
+    </model-identification>
+    <attribute attr_class="NONE" dependencies="false" description="" group="" iotype="NEITHER" name="inventory_reservation" parentDetailsApplicationName="" parentDetailsFunctionality="" parentDetailsModel="" parentDetailsModelTag="@default @1 @default_Sample @agentic_generated" parentDetailsPortfolio="" parentDetailsTenantId="" parentDetailsUsername="" poolId="" revision="" type="STRING">
+        <value name="Reserved" neg-value="false" weight="0"/>
+        <value name="Not_Reserved" neg-value="true" weight="0"/>
+        <requirement ID="OMS-001"/>
+    </attribute>
+    <attribute attr_class="NONE" dependencies="false" description="" group="" iotype="NEITHER" name="order_status" parentDetailsApplicationName="" parentDetailsFunctionality="" parentDetailsModel="" parentDetailsModelTag="@default @1 @default_Sample @agentic_generated" parentDetailsPortfolio="" parentDetailsTenantId="" parentDetailsUsername="" poolId="" revision="" type="STRING">
+        <value name="PAID" neg-value="false" weight="2"/>
+        <value name="ALLOCATED" neg-value="false" weight="1"/>
+        <value name="BACKORDERED" neg-value="false" weight="1"/>
+        <value name="CREATED" neg-value="false" weight="1"/>
+        <requirement ID="OMS-001"/>
+        <requirement ID="OMS-003"/>
+        <requirement ID="OMS-004"/>
+    </attribute>
+    <attribute attr_class="NONE" dependencies="false" description="" group="" iotype="NEITHER" name="allow_partial_shipments" parentDetailsApplicationName="" parentDetailsFunctionality="" parentDetailsModel="" parentDetailsModelTag="@default @1 @default_Sample @agentic_generated" parentDetailsPortfolio="" parentDetailsTenantId="" parentDetailsUsername="" poolId="" revision="" type="BOOLEAN">
+        <value name="true" neg-value="false" weight="0"/>
+        <value name="false" neg-value="false" weight="0"/>
+        <requirement ID="OMS-002"/>
+        <requirement ID="OMS-003"/>
+    </attribute>
+    <attribute attr_class="NONE" dependencies="false" description="" group="" iotype="NEITHER" name="warehouse_fulfillment" parentDetailsApplicationName="" parentDetailsFunctionality="" parentDetailsModel="" parentDetailsModelTag="@default @1 @default_Sample @agentic_generated" parentDetailsPortfolio="" parentDetailsTenantId="" parentDetailsUsername="" poolId="" revision="" type="STRING">
+        <value name="Fulfills_100_Percent" neg-value="false" weight="0"/>
+        <value name="Cannot_Fulfill_100_Percent" neg-value="false" weight="0"/>
+        <requirement ID="OMS-002"/>
+    </attribute>
+    <attribute attr_class="NONE" dependencies="false" description="" group="" iotype="NEITHER" name="shipment_split" parentDetailsApplicationName="" parentDetailsFunctionality="" parentDetailsModel="" parentDetailsModelTag="@default @1 @default_Sample @agentic_generated" parentDetailsPortfolio="" parentDetailsTenantId="" parentDetailsUsername="" poolId="" revision="" type="STRING">
+        <value name="Split_Into_Child_Shipments" neg-value="false" weight="0"/>
+        <value name="Not_Split" neg-value="true" weight="0"/>
+        <requirement ID="OMS-002"/>
+    </attribute>
+    <attribute attr_class="NONE" dependencies="false" description="" group="" iotype="NEITHER" name="single_warehouse_inventory" parentDetailsApplicationName="" parentDetailsFunctionality="" parentDetailsModel="" parentDetailsModelTag="@default @1 @default_Sample @agentic_generated" parentDetailsPortfolio="" parentDetailsTenantId="" parentDetailsUsername="" poolId="" revision="" type="STRING">
+        <value name="Full_Inventory" neg-value="false" weight="0"/>
+        <value name="Not_Available" neg-value="true" weight="0"/>
+        <requirement ID="OMS-003"/>
+    </attribute>
+    <attribute attr_class="NONE" dependencies="false" description="" group="" iotype="NEITHER" name="erp_replenishment_request" parentDetailsApplicationName="" parentDetailsFunctionality="" parentDetailsModel="" parentDetailsModelTag="@default @1 @default_Sample @agentic_generated" parentDetailsPortfolio="" parentDetailsTenantId="" parentDetailsUsername="" poolId="" revision="" type="STRING">
+        <value name="Triggered_Within_5_Minutes" neg-value="false" weight="0"/>
+        <value name="Not_Triggered" neg-value="true" weight="0"/>
+        <requirement ID="OMS-003"/>
+    </attribute>
+    <attribute attr_class="NONE" dependencies="false" description="" group="" iotype="NEITHER" name="child_shipment_status" parentDetailsApplicationName="" parentDetailsFunctionality="" parentDetailsModel="" parentDetailsModelTag="@default @1 @default_Sample @agentic_generated" parentDetailsPortfolio="" parentDetailsTenantId="" parentDetailsUsername="" poolId="" revision="" type="STRING">
+        <value name="PICKING" neg-value="true" weight="0"/>
+        <value name="PACKED" neg-value="true" weight="0"/>
+        <value name="Others" neg-value="false" weight="1"/>
+        <requirement ID="OMS-004"/>
+    </attribute>
+    <attribute attr_class="NONE" dependencies="false" description="" group="" iotype="NEITHER" name="cancellation_result" parentDetailsApplicationName="" parentDetailsFunctionality="" parentDetailsModel="" parentDetailsModelTag="@default @1 @default_Sample @agentic_generated" parentDetailsPortfolio="" parentDetailsTenantId="" parentDetailsUsername="" poolId="" revision="" type="STRING">
+        <value name="Cancelled" neg-value="false" weight="0"/>
+        <value name="Rejected" neg-value="true" weight="0"/>
+        <requirement ID="OMS-004"/>
+    </attribute>
+    <attribute attr_class="NONE" dependencies="false" description="" group="" iotype="NEITHER" name="pickup_confirmation_channel" parentDetailsApplicationName="" parentDetailsFunctionality="" parentDetailsModel="" parentDetailsModelTag="@default @1 @default_Sample @agentic_generated" parentDetailsPortfolio="" parentDetailsTenantId="" parentDetailsUsername="" poolId="" revision="" type="STRING">
+        <value name="EDI_214" neg-value="false" weight="0"/>
+        <value name="Carrier_Webhook" neg-value="false" weight="0"/>
+        <requirement ID="OMS-005"/>
+    </attribute>
+    <attribute attr_class="NONE" dependencies="false" description="" group="" iotype="NEITHER" name="pickup_confirmation" parentDetailsApplicationName="" parentDetailsFunctionality="" parentDetailsModel="" parentDetailsModelTag="@default @1 @default_Sample @agentic_generated" parentDetailsPortfolio="" parentDetailsTenantId="" parentDetailsUsername="" poolId="" revision="" type="STRING">
+        <value name="Confirmed" neg-value="false" weight="0"/>
+        <value name="Not_Confirmed" neg-value="true" weight="0"/>
+        <requirement ID="OMS-005"/>
+    </attribute>
+    <attribute attr_class="NONE" dependencies="false" description="" group="" iotype="NEITHER" name="shipment_status" parentDetailsApplicationName="" parentDetailsFunctionality="" parentDetailsModel="" parentDetailsModelTag="@default @1 @default_Sample @agentic_generated" parentDetailsPortfolio="" parentDetailsTenantId="" parentDetailsUsername="" poolId="" revision="" type="STRING">
+        <value name="IN_TRANSIT" neg-value="false" weight="0"/>
+        <value name="Not_In_Transit" neg-value="true" weight="0"/>
+        <value name="DELIVERY_EXCEPTION" neg-value="false" weight="0"/>
+        <value name="Not_DELIVERY_EXCEPTION" neg-value="true" weight="0"/>
+        <requirement ID="OMS-005"/>
+        <requirement ID="OMS-006"/>
+    </attribute>
+    <attribute attr_class="NONE" dependencies="false" description="" group="" iotype="NEITHER" name="carrier_scan_gap" parentDetailsApplicationName="" parentDetailsFunctionality="" parentDetailsModel="" parentDetailsModelTag="@default @1 @default_Sample @agentic_generated" parentDetailsPortfolio="" parentDetailsTenantId="" parentDetailsUsername="" poolId="" revision="" type="STRING">
+        <value name="More_Than_48_Hours" neg-value="false" weight="0"/>
+        <value name="Up_To_48_Hours" neg-value="false" weight="0"/>
+        <requirement ID="OMS-006"/>
+    </attribute>
+    <attribute attr_class="NONE" dependencies="false" description="" group="" iotype="NEITHER" name="investigation_ticket" parentDetailsApplicationName="" parentDetailsFunctionality="" parentDetailsModel="" parentDetailsModelTag="@default @1 @default_Sample @agentic_generated" parentDetailsPortfolio="" parentDetailsTenantId="" parentDetailsUsername="" poolId="" revision="" type="STRING">
+        <value name="Created" neg-value="false" weight="0"/>
+        <value name="Not_Created" neg-value="true" weight="0"/>
+        <requirement ID="OMS-006"/>
+    </attribute>
+    <attribute attr_class="NONE" dependencies="false" description="" group="" iotype="NEITHER" name="PaymentStatus" parentDetailsApplicationName="" parentDetailsFunctionality="" parentDetailsModel="" parentDetailsModelTag="@default @1 @default_Sample @agentic_generated" parentDetailsPortfolio="" parentDetailsTenantId="" parentDetailsUsername="" poolId="" revision="" type="STRING">
+        <value name="Paid" neg-value="false" weight="1"/>
+        <value name="Pending" neg-value="false" weight="1"/>
+        <value name="failed" neg-value="true" weight="1"/>
+    </attribute>
+    <restriction expression="!(inventory_reservation.equals(&quot;Not_Reserved&quot;)) || !order_status.equals(&quot;ALLOCATED&quot;)" group="" groupedExpression="!(inventory_reservation.equals(&quot;Not_Reserved&quot;)) || !order_status.equals(&quot;ALLOCATED&quot;)" iff="false" isActive="true" isAutoGenerated="false" name="" type="If-Then">
+        <requirement ID="OMS-001"/>
+        <if-expr is_or="false">
+            <focus-ctd-cond attribute="inventory_reservation" operation="Equals">
+                <focus-ctd-cond-val value="Not_Reserved"/>
+            </focus-ctd-cond>
+        </if-expr>
+        <then-expr is_or="false">
+            <focus-ctd-cond attribute="order_status" operation="Doesn't Equal">
+                <focus-ctd-cond-val value="ALLOCATED"/>
+            </focus-ctd-cond>
+        </then-expr>
+    </restriction>
+    <restriction expression="!(single_warehouse_inventory.equals(&quot;Full_Inventory&quot;)) || !order_status.equals(&quot;BACKORDERED&quot;)" group="" groupedExpression="!(single_warehouse_inventory.equals(&quot;Full_Inventory&quot;)) || !order_status.equals(&quot;BACKORDERED&quot;)" iff="false" isActive="true" isAutoGenerated="false" name="" type="If-Then">
+        <requirement ID="OMS-003"/>
+        <if-expr is_or="false">
+            <focus-ctd-cond attribute="single_warehouse_inventory" operation="Equals">
+                <focus-ctd-cond-val value="Full_Inventory"/>
+            </focus-ctd-cond>
+        </if-expr>
+        <then-expr is_or="false">
+            <focus-ctd-cond attribute="order_status" operation="Doesn't Equal">
+                <focus-ctd-cond-val value="BACKORDERED"/>
+            </focus-ctd-cond>
+        </then-expr>
+    </restriction>
+    <restriction expression="!(child_shipment_status.equals(&quot;PICKING&quot;)) || !cancellation_result.equals(&quot;Cancelled&quot;)" group="" groupedExpression="!(child_shipment_status.equals(&quot;PICKING&quot;)) || !cancellation_result.equals(&quot;Cancelled&quot;)" iff="false" isActive="true" isAutoGenerated="false" name="" type="If-Then">
+        <requirement ID="OMS-004"/>
+        <if-expr is_or="false">
+            <focus-ctd-cond attribute="child_shipment_status" operation="Equals">
+                <focus-ctd-cond-val value="PICKING"/>
+            </focus-ctd-cond>
+        </if-expr>
+        <then-expr is_or="false">
+            <focus-ctd-cond attribute="cancellation_result" operation="Doesn't Equal">
+                <focus-ctd-cond-val value="Cancelled"/>
+            </focus-ctd-cond>
+        </then-expr>
+    </restriction>
+    <restriction expression="!(child_shipment_status.equals(&quot;PACKED&quot;)) || !cancellation_result.equals(&quot;Cancelled&quot;)" group="" groupedExpression="!(child_shipment_status.equals(&quot;PACKED&quot;)) || !cancellation_result.equals(&quot;Cancelled&quot;)" iff="false" isActive="true" isAutoGenerated="false" name="" type="If-Then">
+        <requirement ID="OMS-004"/>
+        <if-expr is_or="false">
+            <focus-ctd-cond attribute="child_shipment_status" operation="Equals">
+                <focus-ctd-cond-val value="PACKED"/>
+            </focus-ctd-cond>
+        </if-expr>
+        <then-expr is_or="false">
+            <focus-ctd-cond attribute="cancellation_result" operation="Doesn't Equal">
+                <focus-ctd-cond-val value="Cancelled"/>
+            </focus-ctd-cond>
+        </then-expr>
+    </restriction>
+    <restriction expression="!(pickup_confirmation.equals(&quot;Not_Confirmed&quot;)) || !shipment_status.equals(&quot;IN_TRANSIT&quot;)" group="" groupedExpression="!(pickup_confirmation.equals(&quot;Not_Confirmed&quot;)) || !shipment_status.equals(&quot;IN_TRANSIT&quot;)" iff="false" isActive="true" isAutoGenerated="false" name="" type="If-Then">
+        <requirement ID="OMS-005"/>
+        <if-expr is_or="false">
+            <focus-ctd-cond attribute="pickup_confirmation" operation="Equals">
+                <focus-ctd-cond-val value="Not_Confirmed"/>
+            </focus-ctd-cond>
+        </if-expr>
+        <then-expr is_or="false">
+            <focus-ctd-cond attribute="shipment_status" operation="Doesn't Equal">
+                <focus-ctd-cond-val value="IN_TRANSIT"/>
+            </focus-ctd-cond>
+        </then-expr>
+    </restriction>
+    <restriction expression="!(shipment_status.equals(&quot;Not_DELIVERY_EXCEPTION&quot;)) || !investigation_ticket.equals(&quot;Created&quot;)" group="" groupedExpression="!(shipment_status.equals(&quot;Not_DELIVERY_EXCEPTION&quot;)) || !investigation_ticket.equals(&quot;Created&quot;)" iff="false" isActive="true" isAutoGenerated="false" name="" type="If-Then">
+        <requirement ID="OMS-006"/>
+        <if-expr is_or="false">
+            <focus-ctd-cond attribute="shipment_status" operation="Equals">
+                <focus-ctd-cond-val value="Not_DELIVERY_EXCEPTION"/>
+            </focus-ctd-cond>
+        </if-expr>
+        <then-expr is_or="false">
+            <focus-ctd-cond attribute="investigation_ticket" operation="Doesn't Equal">
+                <focus-ctd-cond-val value="Created"/>
+            </focus-ctd-cond>
+        </then-expr>
+    </restriction>
+    <restriction expression="!(shipment_status.equals(&quot;DELIVERY_EXCEPTION&quot;)) || shipment_status.equals(&quot;DELIVERY_EXCEPTION&quot;)" group="" groupedExpression="!(shipment_status.equals(&quot;DELIVERY_EXCEPTION&quot;)) || shipment_status.equals(&quot;DELIVERY_EXCEPTION&quot;)" iff="false" isActive="true" isAutoGenerated="false" name="" type="If-Then">
+        <if-expr is_or="false">
+            <focus-ctd-cond attribute="shipment_status" operation="Equals">
+                <focus-ctd-cond-val value="DELIVERY_EXCEPTION"/>
+            </focus-ctd-cond>
+        </if-expr>
+        <then-expr is_or="false">
+            <focus-ctd-cond attribute="shipment_status" operation="Equals">
+                <focus-ctd-cond-val value="DELIVERY_EXCEPTION"/>
+            </focus-ctd-cond>
+        </then-expr>
+    </restriction>
+    <dont-care>
+        <attr-value attribute="inventory_reservation" value="Reserved"/>
+        <attr-value attribute="order_status" value="PAID"/>
+        <attr-value attribute="allow_partial_shipments" value="true"/>
+        <attr-value attribute="warehouse_fulfillment" value="Fulfills_100_Percent"/>
+        <attr-value attribute="shipment_split" value="Split_Into_Child_Shipments"/>
+        <attr-value attribute="single_warehouse_inventory" value="Full_Inventory"/>
+        <attr-value attribute="erp_replenishment_request" value="Triggered_Within_5_Minutes"/>
+        <attr-value attribute="child_shipment_status" value="PICKING"/>
+        <attr-value attribute="cancellation_result" value="Rejected"/>
+        <attr-value attribute="pickup_confirmation_channel" value="EDI_214"/>
+        <attr-value attribute="pickup_confirmation" value="Confirmed"/>
+        <attr-value attribute="shipment_status" value="IN_TRANSIT"/>
+        <attr-value attribute="carrier_scan_gap" value="More_Than_48_Hours"/>
+        <attr-value attribute="investigation_ticket" value="Created"/>
+        <attr-value attribute="PaymentStatus" value="Paid"/>
+    </dont-care>
+    <dont-care>
+        <attr-value attribute="inventory_reservation" value="Reserved"/>
+        <attr-value attribute="order_status" value="PAID"/>
+        <attr-value attribute="allow_partial_shipments" value="true"/>
+        <attr-value attribute="warehouse_fulfillment" value="Fulfills_100_Percent"/>
+        <attr-value attribute="shipment_split" value="Split_Into_Child_Shipments"/>
+        <attr-value attribute="single_warehouse_inventory" value="Full_Inventory"/>
+        <attr-value attribute="erp_replenishment_request" value="Triggered_Within_5_Minutes"/>
+        <attr-value attribute="child_shipment_status" value="PICKING"/>
+        <attr-value attribute="cancellation_result" value="Rejected"/>
+        <attr-value attribute="pickup_confirmation_channel" value="EDI_214"/>
+        <attr-value attribute="pickup_confirmation" value="Confirmed"/>
+        <attr-value attribute="shipment_status" value="IN_TRANSIT"/>
+        <attr-value attribute="carrier_scan_gap" value="More_Than_48_Hours"/>
+        <attr-value attribute="investigation_ticket" value="Created"/>
+        <attr-value attribute="PaymentStatus" value="Pending"/>
+    </dont-care>
+    <dont-care>
+        <attr-value attribute="inventory_reservation" value="Reserved"/>
+        <attr-value attribute="order_status" value="PAID"/>
+        <attr-value attribute="allow_partial_shipments" value="true"/>
+        <attr-value attribute="warehouse_fulfillment" value="Fulfills_100_Percent"/>
+        <attr-value attribute="shipment_split" value="Split_Into_Child_Shipments"/>
+        <attr-value attribute="single_warehouse_inventory" value="Full_Inventory"/>
+        <attr-value attribute="erp_replenishment_request" value="Triggered_Within_5_Minutes"/>
+        <attr-value attribute="child_shipment_status" value="PICKING"/>
+        <attr-value attribute="cancellation_result" value="Rejected"/>
+        <attr-value attribute="pickup_confirmation_channel" value="EDI_214"/>
+        <attr-value attribute="pickup_confirmation" value="Confirmed"/>
+        <attr-value attribute="shipment_status" value="IN_TRANSIT"/>
+        <attr-value attribute="carrier_scan_gap" value="More_Than_48_Hours"/>
+        <attr-value attribute="investigation_ticket" value="Created"/>
+        <attr-value attribute="PaymentStatus" value="failed"/>
+    </dont-care>
+    <negative-combination>
+        <attr-value attribute="shipment_split" value="Not_Split"/>
+    </negative-combination>
+    <negative-combination>
+        <attr-value attribute="pickup_confirmation" value="Not_Confirmed"/>
+    </negative-combination>
+    <negative-combination>
+        <attr-value attribute="PaymentStatus" value="failed"/>
+    </negative-combination>
+    <negative-combination>
+        <attr-value attribute="inventory_reservation" value="Not_Reserved"/>
+    </negative-combination>
+    <negative-combination>
+        <attr-value attribute="child_shipment_status" value="PACKED"/>
+    </negative-combination>
+    <negative-combination>
+        <attr-value attribute="child_shipment_status" value="PICKING"/>
+    </negative-combination>
+    <negative-combination>
+        <attr-value attribute="investigation_ticket" value="Not_Created"/>
+    </negative-combination>
+    <negative-combination>
+        <attr-value attribute="cancellation_result" value="Rejected"/>
+    </negative-combination>
+    <negative-combination>
+        <attr-value attribute="erp_replenishment_request" value="Not_Triggered"/>
+    </negative-combination>
+    <negative-combination>
+        <attr-value attribute="single_warehouse_inventory" value="Not_Available"/>
+    </negative-combination>
+    <negative-combination>
+        <attr-value attribute="shipment_status" value="Not_DELIVERY_EXCEPTION"/>
+    </negative-combination>
+    <negative-combination>
+        <attr-value attribute="shipment_status" value="Not_In_Transit"/>
+    </negative-combination>
+    <requirements-collection>
+        <requirement-node Ambiguity="" Complexity="Simple" DocumentName="" Keywords="" Ranking="2147483647" RequirementDescription="" RequirementId="OMS-001" Restrictions=""/>
+        <requirement-node Ambiguity="" Complexity="Simple" DocumentName="" Keywords="" Ranking="2147483647" RequirementDescription="" RequirementId="OMS-002" Restrictions=""/>
+        <requirement-node Ambiguity="" Complexity="Simple" DocumentName="" Keywords="" Ranking="2147483647" RequirementDescription="" RequirementId="OMS-003" Restrictions=""/>
+        <requirement-node Ambiguity="" Complexity="Simple" DocumentName="" Keywords="" Ranking="2147483647" RequirementDescription="" RequirementId="OMS-004" Restrictions=""/>
+        <requirement-node Ambiguity="" Complexity="Simple" DocumentName="" Keywords="" Ranking="2147483647" RequirementDescription="" RequirementId="OMS-005" Restrictions=""/>
+        <requirement-node Ambiguity="" Complexity="Simple" DocumentName="" Keywords="" Ranking="2147483647" RequirementDescription="" RequirementId="OMS-006" Restrictions=""/>
+    </requirements-collection>
+    <coverage-reqs-sets defaultCoverageRequirementsSet="Default">
+        <coverage-reqs-set description="" name="Default">
+            <coverage-req>
+                <attribute name="inventory_reservation"/>
+                <attribute name="order_status"/>
+                <attribute name="allow_partial_shipments"/>
+                <attribute name="warehouse_fulfillment"/>
+                <attribute name="shipment_split"/>
+                <attribute name="single_warehouse_inventory"/>
+                <attribute name="erp_replenishment_request"/>
+                <attribute name="child_shipment_status"/>
+                <attribute name="cancellation_result"/>
+                <attribute name="pickup_confirmation_channel"/>
+                <attribute name="pickup_confirmation"/>
+                <attribute name="shipment_status"/>
+                <attribute name="carrier_scan_gap"/>
+                <attribute name="investigation_ticket"/>
+                <coverage-goal coverage-goal-val="1"/>
+            </coverage-req>
+        </coverage-reqs-set>
+    </coverage-reqs-sets>
+    <neg-coverage-reqs-sets defaultCoverageRequirementsSet="SingleNegativeCoverageRequirementsSet" isAutoNegCoverageRequirements="true">
+        <coverage-reqs-set description="" name="SingleNegativeCoverageRequirementsSet">
+            <coverage-req>
+                <coverage-goal coverage-goal-val="1"/>
+                <negative-attribute-combination>
+                    <attribute name="shipment_split"/>
+                </negative-attribute-combination>
+            </coverage-req>
+            <coverage-req>
+                <coverage-goal coverage-goal-val="1"/>
+                <negative-attribute-combination>
+                    <attribute name="pickup_confirmation"/>
+                </negative-attribute-combination>
+            </coverage-req>
+            <coverage-req>
+                <coverage-goal coverage-goal-val="1"/>
+                <negative-attribute-combination>
+                    <attribute name="PaymentStatus"/>
+                </negative-attribute-combination>
+            </coverage-req>
+            <coverage-req>
+                <coverage-goal coverage-goal-val="1"/>
+                <negative-attribute-combination>
+                    <attribute name="inventory_reservation"/>
+                </negative-attribute-combination>
+            </coverage-req>
+            <coverage-req>
+                <coverage-goal coverage-goal-val="1"/>
+                <negative-attribute-combination>
+                    <attribute name="child_shipment_status"/>
+                </negative-attribute-combination>
+            </coverage-req>
+            <coverage-req>
+                <coverage-goal coverage-goal-val="1"/>
+                <negative-attribute-combination>
+                    <attribute name="investigation_ticket"/>
+                </negative-attribute-combination>
+            </coverage-req>
+            <coverage-req>
+                <coverage-goal coverage-goal-val="1"/>
+                <negative-attribute-combination>
+                    <attribute name="cancellation_result"/>
+                </negative-attribute-combination>
+            </coverage-req>
+            <coverage-req>
+                <coverage-goal coverage-goal-val="1"/>
+                <negative-attribute-combination>
+                    <attribute name="erp_replenishment_request"/>
+                </negative-attribute-combination>
+            </coverage-req>
+            <coverage-req>
+                <coverage-goal coverage-goal-val="1"/>
+                <negative-attribute-combination>
+                    <attribute name="single_warehouse_inventory"/>
+                </negative-attribute-combination>
+            </coverage-req>
+            <coverage-req>
+                <coverage-goal coverage-goal-val="1"/>
+                <negative-attribute-combination>
+                    <attribute name="shipment_status"/>
+                </negative-attribute-combination>
+            </coverage-req>
+        </coverage-reqs-set>
+    </neg-coverage-reqs-sets>
+    <focus-ctd-decoration decorationName="DefaultTestCaseNameDecoration" decorationType="testCaseName" isActiveDecoration="false"/>
+    <focus-ctd-decoration decorationName="DefaultFreeStyleDecoration" decorationType="freeStyle" isActiveDecoration="false"/>
+    <focus-ctd-decoration decorationName="DefaultCucumberDecoration" decorationType="cucumberDecoration" isActiveDecoration="false"/>
+    <focus-ctd-decoration decorationName="DefaultStructuredDecoration" decorationType="structuredDecoration" isActiveDecoration="true">
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test case id-1" negative="false" suppressNewLine="false" triggerType="TEST_CASE_ID">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="TC-DEFAUL-6VGQNQVI"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="inventory_reservation" operation="Equals">
+                <focus-ctd-cond-val value="Not_Reserved"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="order_status" operation="Equals">
+                <focus-ctd-cond-val value="PAID"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="testcase-1" negative="false" suppressNewLine="false" triggerType="Test_Case_Name">
+            <requirement ID="OMS-001"/>
+            <focus-ctd-single-template>
+                <focus-ctd-template text="Payment confirmed with inventory not reserved keeps order from transitioning to ALLOCATED"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="inventory_reservation" operation="Equals">
+                <focus-ctd-cond-val value="Not_Reserved"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="order_status" operation="Equals">
+                <focus-ctd-cond-val value="PAID"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test case description-1" negative="false" suppressNewLine="false" triggerType="Test_Case_Description">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="Verifies that when inventory_reservation is Not_Reserved after a PAID payment confirmation, the order does not transition to ALLOCATED and remains PAID."/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="inventory_reservation" operation="Equals">
+                <focus-ctd-cond-val value="Not_Reserved"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="order_status" operation="Equals">
+                <focus-ctd-cond-val value="PAID"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="pre requisite-1" negative="false" suppressNewLine="false" triggerType="Preconditions">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="An order exists in PAID status in the Order Management System (OMS)&#10;Inventory for the order is not reserved across the assigned warehouse locations&#10;The Payment Webhook endpoint POST /api/v1/oms/orders/{orderId}/payment-confirmed is accessible"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="inventory_reservation" operation="Equals">
+                <focus-ctd-cond-val value="Not_Reserved"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="order_status" operation="Equals">
+                <focus-ctd-cond-val value="PAID"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test data-1" negative="false" suppressNewLine="false" triggerType="Test_Data">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="inventory_reservation=Not_Reserved&#10;order_status=PAID"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="inventory_reservation" operation="Equals">
+                <focus-ctd-cond-val value="Not_Reserved"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="order_status" operation="Equals">
+                <focus-ctd-cond-val value="PAID"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test step-1" negative="false" suppressNewLine="false" triggerType="Test_Steps">
+            <focus-ctd-multiple-template>
+                <focus-ctd-multiple-template-testSteps>
+                    <focus-ctd-template text="Set up an order in PAID status whose inventory is not reserved across its assigned warehouse locations."/>
+                    <focus-ctd-template text="Send POST /api/v1/oms/orders/{orderId}/payment-confirmed for the order."/>
+                    <focus-ctd-template text="Wait up to 2 seconds and check the inventory reservation state for the order's assigned warehouse locations."/>
+                    <focus-ctd-template text="Check the order status of the order after the webhook is processed."/>
+                </focus-ctd-multiple-template-testSteps>
+                <focus-ctd-multiple-template-expectedResults>
+                    <focus-ctd-template text="The order is in PAID status with no inventory reserved."/>
+                    <focus-ctd-template text="The Payment Webhook request is received for the order."/>
+                    <focus-ctd-template text="No inventory is reserved across the assigned warehouse locations within 2 seconds."/>
+                    <focus-ctd-template text="The order status remains PAID and is not transitioned to ALLOCATED."/>
+                </focus-ctd-multiple-template-expectedResults>
+                <focus-ctd-multiple-template-additionalInfo/>
+            </focus-ctd-multiple-template>
+            <focus-ctd-cond attribute="inventory_reservation" operation="Equals">
+                <focus-ctd-cond-val value="Not_Reserved"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="order_status" operation="Equals">
+                <focus-ctd-cond-val value="PAID"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test case id-2" negative="false" suppressNewLine="false" triggerType="TEST_CASE_ID">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="TC-DEFAUL-ZHGSJGC0"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="inventory_reservation" operation="Equals">
+                <focus-ctd-cond-val value="Reserved"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="order_status" operation="Equals">
+                <focus-ctd-cond-val value="ALLOCATED"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="testcase-2" negative="false" suppressNewLine="false" triggerType="Test_Case_Name">
+            <requirement ID="OMS-001"/>
+            <focus-ctd-single-template>
+                <focus-ctd-template text="Payment confirmed with inventory reserved transitions order from PAID to ALLOCATED"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="inventory_reservation" operation="Equals">
+                <focus-ctd-cond-val value="Reserved"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="order_status" operation="Equals">
+                <focus-ctd-cond-val value="ALLOCATED"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test case description-2" negative="false" suppressNewLine="false" triggerType="Test_Case_Description">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="Verifies that when inventory_reservation is Reserved after a PAID payment confirmation, inventory is reserved within 2 seconds and the order status becomes ALLOCATED."/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="inventory_reservation" operation="Equals">
+                <focus-ctd-cond-val value="Reserved"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="order_status" operation="Equals">
+                <focus-ctd-cond-val value="ALLOCATED"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="pre requisite-2" negative="false" suppressNewLine="false" triggerType="Preconditions">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="An order exists in PAID status in the Order Management System (OMS)&#10;Inventory for the order is available across the assigned warehouse locations&#10;The Payment Webhook endpoint POST /api/v1/oms/orders/{orderId}/payment-confirmed is accessible"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="inventory_reservation" operation="Equals">
+                <focus-ctd-cond-val value="Reserved"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="order_status" operation="Equals">
+                <focus-ctd-cond-val value="ALLOCATED"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test data-2" negative="false" suppressNewLine="false" triggerType="Test_Data">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="inventory_reservation=Reserved&#10;order_status=ALLOCATED"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="inventory_reservation" operation="Equals">
+                <focus-ctd-cond-val value="Reserved"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="order_status" operation="Equals">
+                <focus-ctd-cond-val value="ALLOCATED"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test step-2" negative="false" suppressNewLine="false" triggerType="Test_Steps">
+            <focus-ctd-multiple-template>
+                <focus-ctd-multiple-template-testSteps>
+                    <focus-ctd-template text="Set up an order in PAID status with inventory available across its assigned warehouse locations."/>
+                    <focus-ctd-template text="Send POST /api/v1/oms/orders/{orderId}/payment-confirmed for the order."/>
+                    <focus-ctd-template text="Wait up to 2 seconds and check the inventory reservation state for the order's assigned warehouse locations."/>
+                    <focus-ctd-template text="Check the order status of the order after the webhook is processed."/>
+                </focus-ctd-multiple-template-testSteps>
+                <focus-ctd-multiple-template-expectedResults>
+                    <focus-ctd-template text="The order is in PAID status with inventory available."/>
+                    <focus-ctd-template text="The Payment Webhook request is received for the order."/>
+                    <focus-ctd-template text="Inventory is reserved across the assigned warehouse locations within 2 seconds."/>
+                    <focus-ctd-template text="The order status transitions from PAID to ALLOCATED."/>
+                </focus-ctd-multiple-template-expectedResults>
+                <focus-ctd-multiple-template-additionalInfo/>
+            </focus-ctd-multiple-template>
+            <focus-ctd-cond attribute="inventory_reservation" operation="Equals">
+                <focus-ctd-cond-val value="Reserved"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="order_status" operation="Equals">
+                <focus-ctd-cond-val value="ALLOCATED"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test case id-3" negative="false" suppressNewLine="false" triggerType="TEST_CASE_ID">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="TC-DEFAUL-14S4B46X"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="allow_partial_shipments" operation="Equals">
+                <focus-ctd-cond-val value="true"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="warehouse_fulfillment" operation="Equals">
+                <focus-ctd-cond-val value="Cannot_Fulfill_100_Percent"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="shipment_split" operation="Equals">
+                <focus-ctd-cond-val value="Split_Into_Child_Shipments"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="testcase-3" negative="false" suppressNewLine="false" triggerType="Test_Case_Name">
+            <requirement ID="OMS-002"/>
+            <focus-ctd-single-template>
+                <focus-ctd-template text="OMS-002 Partial shipments allowed and no single warehouse fulfills 100 percent splits into child shipments"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="allow_partial_shipments" operation="Equals">
+                <focus-ctd-cond-val value="true"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="warehouse_fulfillment" operation="Equals">
+                <focus-ctd-cond-val value="Cannot_Fulfill_100_Percent"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="shipment_split" operation="Equals">
+                <focus-ctd-cond-val value="Split_Into_Child_Shipments"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test case description-3" negative="false" suppressNewLine="false" triggerType="Test_Case_Description">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="Verifies that the OMS splits an order into child shipments when partial shipments are allowed and no single warehouse can fulfill 100% of the line items."/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="allow_partial_shipments" operation="Equals">
+                <focus-ctd-cond-val value="true"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="warehouse_fulfillment" operation="Equals">
+                <focus-ctd-cond-val value="Cannot_Fulfill_100_Percent"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="shipment_split" operation="Equals">
+                <focus-ctd-cond-val value="Split_Into_Child_Shipments"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="pre requisite-3" negative="false" suppressNewLine="false" triggerType="Preconditions">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="System under test is accessible&#10;Customer account is available to place an order at checkout&#10;No single warehouse holds inventory for 100% of the order's line items"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="allow_partial_shipments" operation="Equals">
+                <focus-ctd-cond-val value="true"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="warehouse_fulfillment" operation="Equals">
+                <focus-ctd-cond-val value="Cannot_Fulfill_100_Percent"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="shipment_split" operation="Equals">
+                <focus-ctd-cond-val value="Split_Into_Child_Shipments"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test data-3" negative="false" suppressNewLine="false" triggerType="Test_Data">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="allow_partial_shipments=true&#10;warehouse_fulfillment=Cannot_Fulfill_100_Percent&#10;shipment_split=Split_Into_Child_Shipments"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="allow_partial_shipments" operation="Equals">
+                <focus-ctd-cond-val value="true"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="warehouse_fulfillment" operation="Equals">
+                <focus-ctd-cond-val value="Cannot_Fulfill_100_Percent"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="shipment_split" operation="Equals">
+                <focus-ctd-cond-val value="Split_Into_Child_Shipments"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test step-3" negative="false" suppressNewLine="false" triggerType="Test_Steps">
+            <focus-ctd-multiple-template>
+                <focus-ctd-multiple-template-testSteps>
+                    <focus-ctd-template text="At checkout, select 'Allow Partial Shipments' = true and place an order whose line items cannot all be fulfilled by a single warehouse"/>
+                    <focus-ctd-template text="Check the warehouse fulfillment evaluation for the order"/>
+                    <focus-ctd-template text="Check the resulting shipments for the order"/>
+                </focus-ctd-multiple-template-testSteps>
+                <focus-ctd-multiple-template-expectedResults>
+                    <focus-ctd-template text="The order is accepted with 'Allow Partial Shipments' set to true"/>
+                    <focus-ctd-template text="The OMS determines that no single warehouse can fulfill 100% of the line items"/>
+                    <focus-ctd-template text="The order is split into the minimum number of child shipments based on warehouse proximity to the shipping postal code"/>
+                </focus-ctd-multiple-template-expectedResults>
+                <focus-ctd-multiple-template-additionalInfo/>
+            </focus-ctd-multiple-template>
+            <focus-ctd-cond attribute="allow_partial_shipments" operation="Equals">
+                <focus-ctd-cond-val value="true"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="warehouse_fulfillment" operation="Equals">
+                <focus-ctd-cond-val value="Cannot_Fulfill_100_Percent"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="shipment_split" operation="Equals">
+                <focus-ctd-cond-val value="Split_Into_Child_Shipments"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test case id-4" negative="false" suppressNewLine="false" triggerType="TEST_CASE_ID">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="TC-DEFAUL-HCAQ6NVR"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="allow_partial_shipments" operation="Equals">
+                <focus-ctd-cond-val value="true"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="warehouse_fulfillment" operation="Equals">
+                <focus-ctd-cond-val value="Cannot_Fulfill_100_Percent"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="shipment_split" operation="Equals">
+                <focus-ctd-cond-val value="Not_Split"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="testcase-4" negative="false" suppressNewLine="false" triggerType="Test_Case_Name">
+            <requirement ID="OMS-002"/>
+            <focus-ctd-single-template>
+                <focus-ctd-template text="OMS-002 Partial shipments allowed and no single warehouse fulfills 100 percent but order is not split"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="allow_partial_shipments" operation="Equals">
+                <focus-ctd-cond-val value="true"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="warehouse_fulfillment" operation="Equals">
+                <focus-ctd-cond-val value="Cannot_Fulfill_100_Percent"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="shipment_split" operation="Equals">
+                <focus-ctd-cond-val value="Not_Split"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test case description-4" negative="false" suppressNewLine="false" triggerType="Test_Case_Description">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="Verifies the blocked behavior when partial shipments are allowed, no single warehouse can fulfill 100% of the order, yet the order is not split into child shipments."/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="allow_partial_shipments" operation="Equals">
+                <focus-ctd-cond-val value="true"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="warehouse_fulfillment" operation="Equals">
+                <focus-ctd-cond-val value="Cannot_Fulfill_100_Percent"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="shipment_split" operation="Equals">
+                <focus-ctd-cond-val value="Not_Split"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="pre requisite-4" negative="false" suppressNewLine="false" triggerType="Preconditions">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="System under test is accessible&#10;Customer account is available to place an order at checkout&#10;No single warehouse holds inventory for 100% of the order's line items"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="allow_partial_shipments" operation="Equals">
+                <focus-ctd-cond-val value="true"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="warehouse_fulfillment" operation="Equals">
+                <focus-ctd-cond-val value="Cannot_Fulfill_100_Percent"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="shipment_split" operation="Equals">
+                <focus-ctd-cond-val value="Not_Split"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test data-4" negative="false" suppressNewLine="false" triggerType="Test_Data">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="allow_partial_shipments=true&#10;warehouse_fulfillment=Cannot_Fulfill_100_Percent&#10;shipment_split=Not_Split"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="allow_partial_shipments" operation="Equals">
+                <focus-ctd-cond-val value="true"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="warehouse_fulfillment" operation="Equals">
+                <focus-ctd-cond-val value="Cannot_Fulfill_100_Percent"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="shipment_split" operation="Equals">
+                <focus-ctd-cond-val value="Not_Split"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test step-4" negative="false" suppressNewLine="false" triggerType="Test_Steps">
+            <focus-ctd-multiple-template>
+                <focus-ctd-multiple-template-testSteps>
+                    <focus-ctd-template text="At checkout, select 'Allow Partial Shipments' = true and place an order whose line items cannot all be fulfilled by a single warehouse"/>
+                    <focus-ctd-template text="Check the warehouse fulfillment evaluation for the order"/>
+                    <focus-ctd-template text="Check whether the order is split into child shipments"/>
+                </focus-ctd-multiple-template-testSteps>
+                <focus-ctd-multiple-template-expectedResults>
+                    <focus-ctd-template text="The order is accepted with 'Allow Partial Shipments' set to true"/>
+                    <focus-ctd-template text="The OMS determines that no single warehouse can fulfill 100% of the line items"/>
+                    <focus-ctd-template text="The order is not split into child shipments, which violates the requirement; the test is marked as failed"/>
+                </focus-ctd-multiple-template-expectedResults>
+                <focus-ctd-multiple-template-additionalInfo/>
+            </focus-ctd-multiple-template>
+            <focus-ctd-cond attribute="allow_partial_shipments" operation="Equals">
+                <focus-ctd-cond-val value="true"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="warehouse_fulfillment" operation="Equals">
+                <focus-ctd-cond-val value="Cannot_Fulfill_100_Percent"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="shipment_split" operation="Equals">
+                <focus-ctd-cond-val value="Not_Split"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test case id-5" negative="false" suppressNewLine="false" triggerType="TEST_CASE_ID">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="TC-DEFAUL-VPO04YQK"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="allow_partial_shipments" operation="Equals">
+                <focus-ctd-cond-val value="true"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="warehouse_fulfillment" operation="Equals">
+                <focus-ctd-cond-val value="Fulfills_100_Percent"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="shipment_split" operation="Equals">
+                <focus-ctd-cond-val value="Not_Split"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="testcase-5" negative="false" suppressNewLine="false" triggerType="Test_Case_Name">
+            <requirement ID="OMS-002"/>
+            <focus-ctd-single-template>
+                <focus-ctd-template text="OMS-002 Single warehouse fulfills 100 percent with partial shipments allowed results in no split"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="allow_partial_shipments" operation="Equals">
+                <focus-ctd-cond-val value="true"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="warehouse_fulfillment" operation="Equals">
+                <focus-ctd-cond-val value="Fulfills_100_Percent"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="shipment_split" operation="Equals">
+                <focus-ctd-cond-val value="Not_Split"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test case description-5" negative="false" suppressNewLine="false" triggerType="Test_Case_Description">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="Verifies that an order fulfilled 100% by a single warehouse is not split, even when partial shipments are allowed."/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="allow_partial_shipments" operation="Equals">
+                <focus-ctd-cond-val value="true"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="warehouse_fulfillment" operation="Equals">
+                <focus-ctd-cond-val value="Fulfills_100_Percent"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="shipment_split" operation="Equals">
+                <focus-ctd-cond-val value="Not_Split"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="pre requisite-5" negative="false" suppressNewLine="false" triggerType="Preconditions">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="System under test is accessible&#10;Customer account is available to place an order at checkout&#10;A single warehouse holds inventory for 100% of the order's line items"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="allow_partial_shipments" operation="Equals">
+                <focus-ctd-cond-val value="true"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="warehouse_fulfillment" operation="Equals">
+                <focus-ctd-cond-val value="Fulfills_100_Percent"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="shipment_split" operation="Equals">
+                <focus-ctd-cond-val value="Not_Split"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test data-5" negative="false" suppressNewLine="false" triggerType="Test_Data">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="allow_partial_shipments=true&#10;warehouse_fulfillment=Fulfills_100_Percent&#10;shipment_split=Not_Split"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="allow_partial_shipments" operation="Equals">
+                <focus-ctd-cond-val value="true"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="warehouse_fulfillment" operation="Equals">
+                <focus-ctd-cond-val value="Fulfills_100_Percent"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="shipment_split" operation="Equals">
+                <focus-ctd-cond-val value="Not_Split"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test step-5" negative="false" suppressNewLine="false" triggerType="Test_Steps">
+            <focus-ctd-multiple-template>
+                <focus-ctd-multiple-template-testSteps>
+                    <focus-ctd-template text="At checkout, select 'Allow Partial Shipments' = true and place an order whose line items can all be fulfilled by a single warehouse"/>
+                    <focus-ctd-template text="Check the warehouse fulfillment evaluation for the order"/>
+                    <focus-ctd-template text="Check whether the order is split into child shipments"/>
+                </focus-ctd-multiple-template-testSteps>
+                <focus-ctd-multiple-template-expectedResults>
+                    <focus-ctd-template text="The order is accepted with 'Allow Partial Shipments' set to true"/>
+                    <focus-ctd-template text="The OMS determines that a single warehouse can fulfill 100% of the line items"/>
+                    <focus-ctd-template text="The order is not split into child shipments"/>
+                </focus-ctd-multiple-template-expectedResults>
+                <focus-ctd-multiple-template-additionalInfo/>
+            </focus-ctd-multiple-template>
+            <focus-ctd-cond attribute="allow_partial_shipments" operation="Equals">
+                <focus-ctd-cond-val value="true"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="warehouse_fulfillment" operation="Equals">
+                <focus-ctd-cond-val value="Fulfills_100_Percent"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="shipment_split" operation="Equals">
+                <focus-ctd-cond-val value="Not_Split"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test case id-6" negative="false" suppressNewLine="false" triggerType="TEST_CASE_ID">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="TC-DEFAUL-PMCAKRZS"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="allow_partial_shipments" operation="Equals">
+                <focus-ctd-cond-val value="false"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="warehouse_fulfillment" operation="Equals">
+                <focus-ctd-cond-val value="Cannot_Fulfill_100_Percent"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="shipment_split" operation="Equals">
+                <focus-ctd-cond-val value="Not_Split"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="testcase-6" negative="false" suppressNewLine="false" triggerType="Test_Case_Name">
+            <requirement ID="OMS-002"/>
+            <focus-ctd-single-template>
+                <focus-ctd-template text="OMS-002 Partial shipments not allowed and no single warehouse fulfills 100 percent results in no split"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="allow_partial_shipments" operation="Equals">
+                <focus-ctd-cond-val value="false"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="warehouse_fulfillment" operation="Equals">
+                <focus-ctd-cond-val value="Cannot_Fulfill_100_Percent"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="shipment_split" operation="Equals">
+                <focus-ctd-cond-val value="Not_Split"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test case description-6" negative="false" suppressNewLine="false" triggerType="Test_Case_Description">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="Verifies that an order is not split into child shipments when the customer did not allow partial shipments, even though no single warehouse can fulfill 100% of the order."/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="allow_partial_shipments" operation="Equals">
+                <focus-ctd-cond-val value="false"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="warehouse_fulfillment" operation="Equals">
+                <focus-ctd-cond-val value="Cannot_Fulfill_100_Percent"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="shipment_split" operation="Equals">
+                <focus-ctd-cond-val value="Not_Split"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="pre requisite-6" negative="false" suppressNewLine="false" triggerType="Preconditions">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="System under test is accessible&#10;Customer account is available to place an order at checkout&#10;No single warehouse holds inventory for 100% of the order's line items"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="allow_partial_shipments" operation="Equals">
+                <focus-ctd-cond-val value="false"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="warehouse_fulfillment" operation="Equals">
+                <focus-ctd-cond-val value="Cannot_Fulfill_100_Percent"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="shipment_split" operation="Equals">
+                <focus-ctd-cond-val value="Not_Split"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test data-6" negative="false" suppressNewLine="false" triggerType="Test_Data">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="allow_partial_shipments=false&#10;warehouse_fulfillment=Cannot_Fulfill_100_Percent&#10;shipment_split=Not_Split"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="allow_partial_shipments" operation="Equals">
+                <focus-ctd-cond-val value="false"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="warehouse_fulfillment" operation="Equals">
+                <focus-ctd-cond-val value="Cannot_Fulfill_100_Percent"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="shipment_split" operation="Equals">
+                <focus-ctd-cond-val value="Not_Split"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test step-6" negative="false" suppressNewLine="false" triggerType="Test_Steps">
+            <focus-ctd-multiple-template>
+                <focus-ctd-multiple-template-testSteps>
+                    <focus-ctd-template text="At checkout, select 'Allow Partial Shipments' = false and place an order whose line items cannot all be fulfilled by a single warehouse"/>
+                    <focus-ctd-template text="Check the warehouse fulfillment evaluation for the order"/>
+                    <focus-ctd-template text="Check whether the order is split into child shipments"/>
+                </focus-ctd-multiple-template-testSteps>
+                <focus-ctd-multiple-template-expectedResults>
+                    <focus-ctd-template text="The order is accepted with 'Allow Partial Shipments' set to false"/>
+                    <focus-ctd-template text="The OMS determines that no single warehouse can fulfill 100% of the line items"/>
+                    <focus-ctd-template text="The order is not split into child shipments because the customer did not select 'Allow Partial Shipments' = true"/>
+                </focus-ctd-multiple-template-expectedResults>
+                <focus-ctd-multiple-template-additionalInfo/>
+            </focus-ctd-multiple-template>
+            <focus-ctd-cond attribute="allow_partial_shipments" operation="Equals">
+                <focus-ctd-cond-val value="false"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="warehouse_fulfillment" operation="Equals">
+                <focus-ctd-cond-val value="Cannot_Fulfill_100_Percent"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="shipment_split" operation="Equals">
+                <focus-ctd-cond-val value="Not_Split"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test case id-7" negative="false" suppressNewLine="false" triggerType="TEST_CASE_ID">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="TC-DEFAUL-IFOGNHB9"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="allow_partial_shipments" operation="Equals">
+                <focus-ctd-cond-val value="false"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="single_warehouse_inventory" operation="Equals">
+                <focus-ctd-cond-val value="Not_Available"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="order_status" operation="Equals">
+                <focus-ctd-cond-val value="BACKORDERED"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="erp_replenishment_request" operation="Equals">
+                <focus-ctd-cond-val value="Triggered_Within_5_Minutes"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="testcase-7" negative="false" suppressNewLine="false" triggerType="Test_Case_Name">
+            <requirement ID="OMS-003"/>
+            <focus-ctd-single-template>
+                <focus-ctd-template text="OMS-003 Backorder order with allow partial shipments false and no single-warehouse full inventory triggers ERP replenishment"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="allow_partial_shipments" operation="Equals">
+                <focus-ctd-cond-val value="false"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="single_warehouse_inventory" operation="Equals">
+                <focus-ctd-cond-val value="Not_Available"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="order_status" operation="Equals">
+                <focus-ctd-cond-val value="BACKORDERED"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="erp_replenishment_request" operation="Equals">
+                <focus-ctd-cond-val value="Triggered_Within_5_Minutes"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test case description-7" negative="false" suppressNewLine="false" triggerType="Test_Case_Description">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="Verifies that with Allow Partial Shipments set to false and no single warehouse holding full inventory, the order is placed in BACKORDERED status and a replenishment request is triggered to the ERP within 5 minutes."/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="allow_partial_shipments" operation="Equals">
+                <focus-ctd-cond-val value="false"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="single_warehouse_inventory" operation="Equals">
+                <focus-ctd-cond-val value="Not_Available"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="order_status" operation="Equals">
+                <focus-ctd-cond-val value="BACKORDERED"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="erp_replenishment_request" operation="Equals">
+                <focus-ctd-cond-val value="Triggered_Within_5_Minutes"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="pre requisite-7" negative="false" suppressNewLine="false" triggerType="Preconditions">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="System under test is accessible&#10;Connection to the ERP for inventory replenishment requests is available&#10;Order fulfillment configuration allows setting Allow Partial Shipments"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="allow_partial_shipments" operation="Equals">
+                <focus-ctd-cond-val value="false"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="single_warehouse_inventory" operation="Equals">
+                <focus-ctd-cond-val value="Not_Available"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="order_status" operation="Equals">
+                <focus-ctd-cond-val value="BACKORDERED"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="erp_replenishment_request" operation="Equals">
+                <focus-ctd-cond-val value="Triggered_Within_5_Minutes"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test data-7" negative="false" suppressNewLine="false" triggerType="Test_Data">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="allow_partial_shipments=false&#10;single_warehouse_inventory=Not_Available&#10;order_status=BACKORDERED&#10;erp_replenishment_request=Triggered_Within_5_Minutes"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="allow_partial_shipments" operation="Equals">
+                <focus-ctd-cond-val value="false"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="single_warehouse_inventory" operation="Equals">
+                <focus-ctd-cond-val value="Not_Available"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="order_status" operation="Equals">
+                <focus-ctd-cond-val value="BACKORDERED"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="erp_replenishment_request" operation="Equals">
+                <focus-ctd-cond-val value="Triggered_Within_5_Minutes"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test step-7" negative="false" suppressNewLine="false" triggerType="Test_Steps">
+            <focus-ctd-multiple-template>
+                <focus-ctd-multiple-template-testSteps>
+                    <focus-ctd-template text="Set Allow Partial Shipments to false in the order fulfillment configuration."/>
+                    <focus-ctd-template text="Create an order with line items for which no single warehouse holds full inventory for all line items."/>
+                    <focus-ctd-template text="Submit the order and check the resulting order status."/>
+                    <focus-ctd-template text="Check the inventory replenishment request sent to the ERP and the time it was triggered."/>
+                </focus-ctd-multiple-template-testSteps>
+                <focus-ctd-multiple-template-expectedResults>
+                    <focus-ctd-template text="Allow Partial Shipments is saved as false."/>
+                    <focus-ctd-template text="The order is created and no single warehouse is identified as holding full inventory for all line items."/>
+                    <focus-ctd-template text="The order status is BACKORDERED."/>
+                    <focus-ctd-template text="An inventory replenishment request is triggered to the ERP within 5 minutes."/>
+                </focus-ctd-multiple-template-expectedResults>
+                <focus-ctd-multiple-template-additionalInfo/>
+            </focus-ctd-multiple-template>
+            <focus-ctd-cond attribute="allow_partial_shipments" operation="Equals">
+                <focus-ctd-cond-val value="false"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="single_warehouse_inventory" operation="Equals">
+                <focus-ctd-cond-val value="Not_Available"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="order_status" operation="Equals">
+                <focus-ctd-cond-val value="BACKORDERED"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="erp_replenishment_request" operation="Equals">
+                <focus-ctd-cond-val value="Triggered_Within_5_Minutes"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test case id-8" negative="false" suppressNewLine="false" triggerType="TEST_CASE_ID">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="TC-DEFAUL-GXHHZYDL"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="allow_partial_shipments" operation="Equals">
+                <focus-ctd-cond-val value="false"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="order_status" operation="Equals">
+                <focus-ctd-cond-val value="BACKORDERED"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="erp_replenishment_request" operation="Equals">
+                <focus-ctd-cond-val value="Not_Triggered"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="testcase-8" negative="false" suppressNewLine="false" triggerType="Test_Case_Name">
+            <requirement ID="OMS-003"/>
+            <focus-ctd-single-template>
+                <focus-ctd-template text="OMS-003 Backordered order with no ERP replenishment request triggered within 5 minutes"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="allow_partial_shipments" operation="Equals">
+                <focus-ctd-cond-val value="false"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="order_status" operation="Equals">
+                <focus-ctd-cond-val value="BACKORDERED"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="erp_replenishment_request" operation="Equals">
+                <focus-ctd-cond-val value="Not_Triggered"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test case description-8" negative="false" suppressNewLine="false" triggerType="Test_Case_Description">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="Verifies the blocked behavior where a backordered order with Allow Partial Shipments set to false does not result in an ERP replenishment request being triggered within 5 minutes."/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="allow_partial_shipments" operation="Equals">
+                <focus-ctd-cond-val value="false"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="order_status" operation="Equals">
+                <focus-ctd-cond-val value="BACKORDERED"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="erp_replenishment_request" operation="Equals">
+                <focus-ctd-cond-val value="Not_Triggered"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="pre requisite-8" negative="false" suppressNewLine="false" triggerType="Preconditions">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="System under test is accessible&#10;Connection to the ERP for inventory replenishment requests is available&#10;Order fulfillment configuration allows setting Allow Partial Shipments"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="allow_partial_shipments" operation="Equals">
+                <focus-ctd-cond-val value="false"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="order_status" operation="Equals">
+                <focus-ctd-cond-val value="BACKORDERED"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="erp_replenishment_request" operation="Equals">
+                <focus-ctd-cond-val value="Not_Triggered"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test data-8" negative="false" suppressNewLine="false" triggerType="Test_Data">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="allow_partial_shipments=false&#10;order_status=BACKORDERED&#10;erp_replenishment_request=Not_Triggered"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="allow_partial_shipments" operation="Equals">
+                <focus-ctd-cond-val value="false"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="order_status" operation="Equals">
+                <focus-ctd-cond-val value="BACKORDERED"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="erp_replenishment_request" operation="Equals">
+                <focus-ctd-cond-val value="Not_Triggered"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test step-8" negative="false" suppressNewLine="false" triggerType="Test_Steps">
+            <focus-ctd-multiple-template>
+                <focus-ctd-multiple-template-testSteps>
+                    <focus-ctd-template text="Set Allow Partial Shipments to false in the order fulfillment configuration."/>
+                    <focus-ctd-template text="Place an order that is subject to backordering because no single warehouse holds full inventory for all line items."/>
+                    <focus-ctd-template text="Check the order status."/>
+                    <focus-ctd-template text="Check whether an inventory replenishment request was triggered to the ERP within 5 minutes."/>
+                </focus-ctd-multiple-template-testSteps>
+                <focus-ctd-multiple-template-expectedResults>
+                    <focus-ctd-template text="Allow Partial Shipments is saved as false."/>
+                    <focus-ctd-template text="The order is accepted for backordering processing."/>
+                    <focus-ctd-template text="The order status is BACKORDERED."/>
+                    <focus-ctd-template text="No inventory replenishment request is triggered to the ERP within 5 minutes; the replenishment trigger is blocked, which does not meet the requirement."/>
+                </focus-ctd-multiple-template-expectedResults>
+                <focus-ctd-multiple-template-additionalInfo/>
+            </focus-ctd-multiple-template>
+            <focus-ctd-cond attribute="allow_partial_shipments" operation="Equals">
+                <focus-ctd-cond-val value="false"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="order_status" operation="Equals">
+                <focus-ctd-cond-val value="BACKORDERED"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="erp_replenishment_request" operation="Equals">
+                <focus-ctd-cond-val value="Not_Triggered"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test case id-10" negative="false" suppressNewLine="false" triggerType="TEST_CASE_ID">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="TC-DEFAUL-S0LHNLZS"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="child_shipment_status" operation="Equals">
+                <focus-ctd-cond-val value="PICKING"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="testcase-10" negative="false" suppressNewLine="false" triggerType="Test_Case_Name">
+            <requirement ID="OMS-004"/>
+            <focus-ctd-single-template>
+                <focus-ctd-template text="OMS-004 Cancel order rejected when child shipment is PICKING"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="child_shipment_status" operation="Equals">
+                <focus-ctd-cond-val value="PICKING"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test case description-10" negative="false" suppressNewLine="false" triggerType="Test_Case_Description">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="Verifies that DELETE /api/v1/oms/orders/{orderId} is rejected with HTTP 409 and error code OMS_ERR_ALREADY_IN_FULFILLMENT when a child shipment is in PICKING."/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="child_shipment_status" operation="Equals">
+                <focus-ctd-cond-val value="PICKING"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="pre requisite-10" negative="false" suppressNewLine="false" triggerType="Preconditions">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="System under test is accessible&#10;An order exists with a child shipment that can be set to PICKING"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="child_shipment_status" operation="Equals">
+                <focus-ctd-cond-val value="PICKING"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test data-10" negative="false" suppressNewLine="false" triggerType="Test_Data">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="child_shipment_status=PICKING"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="child_shipment_status" operation="Equals">
+                <focus-ctd-cond-val value="PICKING"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test step-10" negative="false" suppressNewLine="false" triggerType="Test_Steps">
+            <focus-ctd-multiple-template>
+                <focus-ctd-multiple-template-testSteps>
+                    <focus-ctd-template text="Set the child shipment of the order to PICKING."/>
+                    <focus-ctd-template text="Send DELETE /api/v1/oms/orders/{orderId} for that order."/>
+                    <focus-ctd-template text="Validate the API response and the order state."/>
+                </focus-ctd-multiple-template-testSteps>
+                <focus-ctd-multiple-template-expectedResults>
+                    <focus-ctd-template text="The child shipment status is PICKING."/>
+                    <focus-ctd-template text="The API receives the cancellation request."/>
+                    <focus-ctd-template text="The API rejects the cancellation with HTTP 409 Conflict and error code 'OMS_ERR_ALREADY_IN_FULFILLMENT'. Message text: The order is not cancelled."/>
+                </focus-ctd-multiple-template-expectedResults>
+                <focus-ctd-multiple-template-additionalInfo/>
+            </focus-ctd-multiple-template>
+            <focus-ctd-cond attribute="child_shipment_status" operation="Equals">
+                <focus-ctd-cond-val value="PICKING"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test case id-11" negative="false" suppressNewLine="false" triggerType="TEST_CASE_ID">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="TC-DEFAUL-JR33VADK"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="child_shipment_status" operation="Equals">
+                <focus-ctd-cond-val value="PACKED"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="testcase-11" negative="false" suppressNewLine="false" triggerType="Test_Case_Name">
+            <requirement ID="OMS-004"/>
+            <focus-ctd-single-template>
+                <focus-ctd-template text="OMS-004 Cancel order rejected when child shipment is PACKED"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="child_shipment_status" operation="Equals">
+                <focus-ctd-cond-val value="PACKED"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test case description-11" negative="false" suppressNewLine="false" triggerType="Test_Case_Description">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="Verifies that DELETE /api/v1/oms/orders/{orderId} is rejected with HTTP 409 and error code OMS_ERR_ALREADY_IN_FULFILLMENT when a child shipment is in PACKED."/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="child_shipment_status" operation="Equals">
+                <focus-ctd-cond-val value="PACKED"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="pre requisite-11" negative="false" suppressNewLine="false" triggerType="Preconditions">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="System under test is accessible&#10;An order exists with a child shipment that can be set to PACKED"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="child_shipment_status" operation="Equals">
+                <focus-ctd-cond-val value="PACKED"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test data-11" negative="false" suppressNewLine="false" triggerType="Test_Data">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="child_shipment_status=PACKED"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="child_shipment_status" operation="Equals">
+                <focus-ctd-cond-val value="PACKED"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test step-11" negative="false" suppressNewLine="false" triggerType="Test_Steps">
+            <focus-ctd-multiple-template>
+                <focus-ctd-multiple-template-testSteps>
+                    <focus-ctd-template text="Set the child shipment of the order to PACKED."/>
+                    <focus-ctd-template text="Send DELETE /api/v1/oms/orders/{orderId} for that order."/>
+                    <focus-ctd-template text="Validate the API response and the order state."/>
+                </focus-ctd-multiple-template-testSteps>
+                <focus-ctd-multiple-template-expectedResults>
+                    <focus-ctd-template text="The child shipment status is PACKED."/>
+                    <focus-ctd-template text="The API receives the cancellation request."/>
+                    <focus-ctd-template text="The API rejects the cancellation with HTTP 409 Conflict and error code 'OMS_ERR_ALREADY_IN_FULFILLMENT'. Message text: The order is not cancelled."/>
+                </focus-ctd-multiple-template-expectedResults>
+                <focus-ctd-multiple-template-additionalInfo/>
+            </focus-ctd-multiple-template>
+            <focus-ctd-cond attribute="child_shipment_status" operation="Equals">
+                <focus-ctd-cond-val value="PACKED"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test case id-12" negative="false" suppressNewLine="false" triggerType="TEST_CASE_ID">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="TC-DEFAUL-26ZOLUAH"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="cancellation_result" operation="Equals">
+                <focus-ctd-cond-val value="Rejected"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="testcase-12" negative="false" suppressNewLine="false" triggerType="Test_Case_Name">
+            <requirement ID="OMS-004"/>
+            <focus-ctd-single-template>
+                <focus-ctd-template text="OMS-004 Cancellation result Rejected for order in fulfillment"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="cancellation_result" operation="Equals">
+                <focus-ctd-cond-val value="Rejected"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test case description-12" negative="false" suppressNewLine="false" triggerType="Test_Case_Description">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="Verifies that the cancellation attempt on an order already in fulfillment produces the Rejected result."/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="cancellation_result" operation="Equals">
+                <focus-ctd-cond-val value="Rejected"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="pre requisite-12" negative="false" suppressNewLine="false" triggerType="Preconditions">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="System under test is accessible&#10;An order exists with a child shipment already in fulfillment (PICKING or PACKED)"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="cancellation_result" operation="Equals">
+                <focus-ctd-cond-val value="Rejected"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test data-12" negative="false" suppressNewLine="false" triggerType="Test_Data">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="cancellation_result=Rejected"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="cancellation_result" operation="Equals">
+                <focus-ctd-cond-val value="Rejected"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test step-12" negative="false" suppressNewLine="false" triggerType="Test_Steps">
+            <focus-ctd-multiple-template>
+                <focus-ctd-multiple-template-testSteps>
+                    <focus-ctd-template text="Send DELETE /api/v1/oms/orders/{orderId} for the order whose child shipment is in fulfillment."/>
+                    <focus-ctd-template text="Validate the cancellation result."/>
+                </focus-ctd-multiple-template-testSteps>
+                <focus-ctd-multiple-template-expectedResults>
+                    <focus-ctd-template text="The API receives the cancellation request."/>
+                    <focus-ctd-template text="The cancellation result is Rejected with HTTP 409 Conflict and error code 'OMS_ERR_ALREADY_IN_FULFILLMENT'. Message text: The order is not cancelled."/>
+                </focus-ctd-multiple-template-expectedResults>
+                <focus-ctd-multiple-template-additionalInfo/>
+            </focus-ctd-multiple-template>
+            <focus-ctd-cond attribute="cancellation_result" operation="Equals">
+                <focus-ctd-cond-val value="Rejected"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test case id-13" negative="false" suppressNewLine="false" triggerType="TEST_CASE_ID">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="TC-DEFAUL-8JQ9AGPV"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="order_status" operation="Equals">
+                <focus-ctd-cond-val value="CREATED"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="cancellation_result" operation="Equals">
+                <focus-ctd-cond-val value="Cancelled"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="testcase-13" negative="false" suppressNewLine="false" triggerType="Test_Case_Name">
+            <requirement ID="OMS-004"/>
+            <focus-ctd-single-template>
+                <focus-ctd-template text="OMS-004 Cancel order succeeds in CREATED status"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="order_status" operation="Equals">
+                <focus-ctd-cond-val value="CREATED"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="cancellation_result" operation="Equals">
+                <focus-ctd-cond-val value="Cancelled"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test case description-13" negative="false" suppressNewLine="false" triggerType="Test_Case_Description">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="Verifies that DELETE /api/v1/oms/orders/{orderId} cancels an order whose status is CREATED."/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="order_status" operation="Equals">
+                <focus-ctd-cond-val value="CREATED"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="cancellation_result" operation="Equals">
+                <focus-ctd-cond-val value="Cancelled"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="pre requisite-13" negative="false" suppressNewLine="false" triggerType="Preconditions">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="System under test is accessible&#10;An order exists in status CREATED with no child shipment in PICKING or PACKED"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="order_status" operation="Equals">
+                <focus-ctd-cond-val value="CREATED"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="cancellation_result" operation="Equals">
+                <focus-ctd-cond-val value="Cancelled"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test data-13" negative="false" suppressNewLine="false" triggerType="Test_Data">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="order_status=CREATED&#10;cancellation_result=Cancelled"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="order_status" operation="Equals">
+                <focus-ctd-cond-val value="CREATED"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="cancellation_result" operation="Equals">
+                <focus-ctd-cond-val value="Cancelled"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test step-13" negative="false" suppressNewLine="false" triggerType="Test_Steps">
+            <focus-ctd-multiple-template>
+                <focus-ctd-multiple-template-testSteps>
+                    <focus-ctd-template text="Confirm the order status is CREATED."/>
+                    <focus-ctd-template text="Send DELETE /api/v1/oms/orders/{orderId} for the order."/>
+                    <focus-ctd-template text="Validate the cancellation result."/>
+                </focus-ctd-multiple-template-testSteps>
+                <focus-ctd-multiple-template-expectedResults>
+                    <focus-ctd-template text="The order status is CREATED."/>
+                    <focus-ctd-template text="The API receives the cancellation request."/>
+                    <focus-ctd-template text="The order is cancelled (cancellation_result=Cancelled). Message text:"/>
+                </focus-ctd-multiple-template-expectedResults>
+                <focus-ctd-multiple-template-additionalInfo/>
+            </focus-ctd-multiple-template>
+            <focus-ctd-cond attribute="order_status" operation="Equals">
+                <focus-ctd-cond-val value="CREATED"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="cancellation_result" operation="Equals">
+                <focus-ctd-cond-val value="Cancelled"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test case id-14" negative="false" suppressNewLine="false" triggerType="TEST_CASE_ID">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="TC-DEFAUL-G8TFJXM8"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="order_status" operation="Equals">
+                <focus-ctd-cond-val value="PAID"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="cancellation_result" operation="Equals">
+                <focus-ctd-cond-val value="Cancelled"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="testcase-14" negative="false" suppressNewLine="false" triggerType="Test_Case_Name">
+            <requirement ID="OMS-004"/>
+            <focus-ctd-single-template>
+                <focus-ctd-template text="OMS-004 Cancel order succeeds in PAID status"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="order_status" operation="Equals">
+                <focus-ctd-cond-val value="PAID"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="cancellation_result" operation="Equals">
+                <focus-ctd-cond-val value="Cancelled"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test case description-14" negative="false" suppressNewLine="false" triggerType="Test_Case_Description">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="Verifies that DELETE /api/v1/oms/orders/{orderId} cancels an order whose status is PAID."/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="order_status" operation="Equals">
+                <focus-ctd-cond-val value="PAID"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="cancellation_result" operation="Equals">
+                <focus-ctd-cond-val value="Cancelled"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="pre requisite-14" negative="false" suppressNewLine="false" triggerType="Preconditions">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="System under test is accessible&#10;An order exists in status PAID with no child shipment in PICKING or PACKED"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="order_status" operation="Equals">
+                <focus-ctd-cond-val value="PAID"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="cancellation_result" operation="Equals">
+                <focus-ctd-cond-val value="Cancelled"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test data-14" negative="false" suppressNewLine="false" triggerType="Test_Data">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="order_status=PAID&#10;cancellation_result=Cancelled"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="order_status" operation="Equals">
+                <focus-ctd-cond-val value="PAID"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="cancellation_result" operation="Equals">
+                <focus-ctd-cond-val value="Cancelled"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test step-14" negative="false" suppressNewLine="false" triggerType="Test_Steps">
+            <focus-ctd-multiple-template>
+                <focus-ctd-multiple-template-testSteps>
+                    <focus-ctd-template text="Confirm the order status is PAID."/>
+                    <focus-ctd-template text="Send DELETE /api/v1/oms/orders/{orderId} for the order."/>
+                    <focus-ctd-template text="Validate the cancellation result."/>
+                </focus-ctd-multiple-template-testSteps>
+                <focus-ctd-multiple-template-expectedResults>
+                    <focus-ctd-template text="The order status is PAID."/>
+                    <focus-ctd-template text="The API receives the cancellation request."/>
+                    <focus-ctd-template text="The order is cancelled (cancellation_result=Cancelled). Message text:"/>
+                </focus-ctd-multiple-template-expectedResults>
+                <focus-ctd-multiple-template-additionalInfo/>
+            </focus-ctd-multiple-template>
+            <focus-ctd-cond attribute="order_status" operation="Equals">
+                <focus-ctd-cond-val value="PAID"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="cancellation_result" operation="Equals">
+                <focus-ctd-cond-val value="Cancelled"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test case id-15" negative="false" suppressNewLine="false" triggerType="TEST_CASE_ID">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="TC-DEFAUL-BT3DCO0E"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="order_status" operation="Equals">
+                <focus-ctd-cond-val value="ALLOCATED"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="cancellation_result" operation="Equals">
+                <focus-ctd-cond-val value="Cancelled"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="testcase-15" negative="false" suppressNewLine="false" triggerType="Test_Case_Name">
+            <requirement ID="OMS-004"/>
+            <focus-ctd-single-template>
+                <focus-ctd-template text="OMS-004 Cancel order succeeds in ALLOCATED status"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="order_status" operation="Equals">
+                <focus-ctd-cond-val value="ALLOCATED"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="cancellation_result" operation="Equals">
+                <focus-ctd-cond-val value="Cancelled"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test case description-15" negative="false" suppressNewLine="false" triggerType="Test_Case_Description">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="Verifies that DELETE /api/v1/oms/orders/{orderId} cancels an order whose status is ALLOCATED."/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="order_status" operation="Equals">
+                <focus-ctd-cond-val value="ALLOCATED"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="cancellation_result" operation="Equals">
+                <focus-ctd-cond-val value="Cancelled"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="pre requisite-15" negative="false" suppressNewLine="false" triggerType="Preconditions">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="System under test is accessible&#10;An order exists in status ALLOCATED with no child shipment in PICKING or PACKED"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="order_status" operation="Equals">
+                <focus-ctd-cond-val value="ALLOCATED"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="cancellation_result" operation="Equals">
+                <focus-ctd-cond-val value="Cancelled"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test data-15" negative="false" suppressNewLine="false" triggerType="Test_Data">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="order_status=ALLOCATED&#10;cancellation_result=Cancelled"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="order_status" operation="Equals">
+                <focus-ctd-cond-val value="ALLOCATED"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="cancellation_result" operation="Equals">
+                <focus-ctd-cond-val value="Cancelled"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test step-15" negative="false" suppressNewLine="false" triggerType="Test_Steps">
+            <focus-ctd-multiple-template>
+                <focus-ctd-multiple-template-testSteps>
+                    <focus-ctd-template text="Confirm the order status is ALLOCATED."/>
+                    <focus-ctd-template text="Send DELETE /api/v1/oms/orders/{orderId} for the order."/>
+                    <focus-ctd-template text="Validate the cancellation result."/>
+                </focus-ctd-multiple-template-testSteps>
+                <focus-ctd-multiple-template-expectedResults>
+                    <focus-ctd-template text="The order status is ALLOCATED."/>
+                    <focus-ctd-template text="The API receives the cancellation request."/>
+                    <focus-ctd-template text="The order is cancelled (cancellation_result=Cancelled). Message text:"/>
+                </focus-ctd-multiple-template-expectedResults>
+                <focus-ctd-multiple-template-additionalInfo/>
+            </focus-ctd-multiple-template>
+            <focus-ctd-cond attribute="order_status" operation="Equals">
+                <focus-ctd-cond-val value="ALLOCATED"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="cancellation_result" operation="Equals">
+                <focus-ctd-cond-val value="Cancelled"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test case id-16" negative="false" suppressNewLine="false" triggerType="TEST_CASE_ID">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="TC-DEFAUL-BT76IP9B"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="pickup_confirmation_channel" operation="Equals">
+                <focus-ctd-cond-val value="EDI_214"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="pickup_confirmation" operation="Equals">
+                <focus-ctd-cond-val value="Confirmed"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="shipment_status" operation="Equals">
+                <focus-ctd-cond-val value="IN_TRANSIT"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="testcase-16" negative="false" suppressNewLine="false" triggerType="Test_Case_Name">
+            <requirement ID="OMS-005"/>
+            <focus-ctd-single-template>
+                <focus-ctd-template text="OMS-005 Confirmed pickup via EDI_214 transitions shipment to IN_TRANSIT and publishes OrderShipped"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="pickup_confirmation_channel" operation="Equals">
+                <focus-ctd-cond-val value="EDI_214"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="pickup_confirmation" operation="Equals">
+                <focus-ctd-cond-val value="Confirmed"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="shipment_status" operation="Equals">
+                <focus-ctd-cond-val value="IN_TRANSIT"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test case description-16" negative="false" suppressNewLine="false" triggerType="Test_Case_Description">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="Verifies that a carrier pickup confirmation received through EDI 214 transitions the shipment to IN_TRANSIT, records the tracking number and UTC timestamp, and publishes an OrderShipped event."/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="pickup_confirmation_channel" operation="Equals">
+                <focus-ctd-cond-val value="EDI_214"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="pickup_confirmation" operation="Equals">
+                <focus-ctd-cond-val value="Confirmed"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="shipment_status" operation="Equals">
+                <focus-ctd-cond-val value="IN_TRANSIT"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="pre requisite-16" negative="false" suppressNewLine="false" triggerType="Preconditions">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="System under test is accessible&#10;A shipment exists in the OMS awaiting carrier pickup&#10;The Kafka topic 'oms.shipment.events.v1' is available for monitoring"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="pickup_confirmation_channel" operation="Equals">
+                <focus-ctd-cond-val value="EDI_214"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="pickup_confirmation" operation="Equals">
+                <focus-ctd-cond-val value="Confirmed"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="shipment_status" operation="Equals">
+                <focus-ctd-cond-val value="IN_TRANSIT"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test data-16" negative="false" suppressNewLine="false" triggerType="Test_Data">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="pickup_confirmation_channel=EDI_214&#10;pickup_confirmation=Confirmed&#10;shipment_status=IN_TRANSIT"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="pickup_confirmation_channel" operation="Equals">
+                <focus-ctd-cond-val value="EDI_214"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="pickup_confirmation" operation="Equals">
+                <focus-ctd-cond-val value="Confirmed"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="shipment_status" operation="Equals">
+                <focus-ctd-cond-val value="IN_TRANSIT"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test step-16" negative="false" suppressNewLine="false" triggerType="Test_Steps">
+            <focus-ctd-multiple-template>
+                <focus-ctd-multiple-template-testSteps>
+                    <focus-ctd-template text="Send an EDI 214 carrier pickup confirmation for the shipment, including the carrier tracking number."/>
+                    <focus-ctd-template text="Verify that the OMS accepts the pickup confirmation as Confirmed."/>
+                    <focus-ctd-template text="Verify the shipment status is updated to IN_TRANSIT."/>
+                    <focus-ctd-template text="Verify the carrier tracking number is recorded on the shipment."/>
+                    <focus-ctd-template text="Verify a UTC timestamp of the pickup confirmation is recorded on the shipment."/>
+                    <focus-ctd-template text="Verify an 'OrderShipped' event is published to the Kafka topic 'oms.shipment.events.v1'."/>
+                </focus-ctd-multiple-template-testSteps>
+                <focus-ctd-multiple-template-expectedResults>
+                    <focus-ctd-template text="The EDI 214 message is received by the OMS."/>
+                    <focus-ctd-template text="The pickup confirmation is accepted as Confirmed."/>
+                    <focus-ctd-template text="The shipment status reads IN_TRANSIT."/>
+                    <focus-ctd-template text="The carrier tracking number from the EDI 214 message is stored on the shipment."/>
+                    <focus-ctd-template text="A UTC timestamp is stored on the shipment."/>
+                    <focus-ctd-template text="An 'OrderShipped' event is present on topic 'oms.shipment.events.v1'."/>
+                </focus-ctd-multiple-template-expectedResults>
+                <focus-ctd-multiple-template-additionalInfo/>
+            </focus-ctd-multiple-template>
+            <focus-ctd-cond attribute="pickup_confirmation_channel" operation="Equals">
+                <focus-ctd-cond-val value="EDI_214"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="pickup_confirmation" operation="Equals">
+                <focus-ctd-cond-val value="Confirmed"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="shipment_status" operation="Equals">
+                <focus-ctd-cond-val value="IN_TRANSIT"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test case id-17" negative="false" suppressNewLine="false" triggerType="TEST_CASE_ID">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="TC-DEFAUL-S82N75VS"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="pickup_confirmation_channel" operation="Equals">
+                <focus-ctd-cond-val value="Carrier_Webhook"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="pickup_confirmation" operation="Equals">
+                <focus-ctd-cond-val value="Confirmed"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="shipment_status" operation="Equals">
+                <focus-ctd-cond-val value="IN_TRANSIT"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="testcase-17" negative="false" suppressNewLine="false" triggerType="Test_Case_Name">
+            <requirement ID="OMS-005"/>
+            <focus-ctd-single-template>
+                <focus-ctd-template text="OMS-005 Confirmed pickup via Carrier_Webhook transitions shipment to IN_TRANSIT and publishes OrderShipped"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="pickup_confirmation_channel" operation="Equals">
+                <focus-ctd-cond-val value="Carrier_Webhook"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="pickup_confirmation" operation="Equals">
+                <focus-ctd-cond-val value="Confirmed"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="shipment_status" operation="Equals">
+                <focus-ctd-cond-val value="IN_TRANSIT"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test case description-17" negative="false" suppressNewLine="false" triggerType="Test_Case_Description">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="Verifies that a carrier pickup confirmation received through a Carrier Webhook transitions the shipment to IN_TRANSIT, records the tracking number and UTC timestamp, and publishes an OrderShipped event."/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="pickup_confirmation_channel" operation="Equals">
+                <focus-ctd-cond-val value="Carrier_Webhook"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="pickup_confirmation" operation="Equals">
+                <focus-ctd-cond-val value="Confirmed"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="shipment_status" operation="Equals">
+                <focus-ctd-cond-val value="IN_TRANSIT"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="pre requisite-17" negative="false" suppressNewLine="false" triggerType="Preconditions">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="System under test is accessible&#10;A shipment exists in the OMS awaiting carrier pickup&#10;The carrier webhook endpoint is configured to send pickup confirmations to the OMS&#10;The Kafka topic 'oms.shipment.events.v1' is available for monitoring"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="pickup_confirmation_channel" operation="Equals">
+                <focus-ctd-cond-val value="Carrier_Webhook"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="pickup_confirmation" operation="Equals">
+                <focus-ctd-cond-val value="Confirmed"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="shipment_status" operation="Equals">
+                <focus-ctd-cond-val value="IN_TRANSIT"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test data-17" negative="false" suppressNewLine="false" triggerType="Test_Data">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="pickup_confirmation_channel=Carrier_Webhook&#10;pickup_confirmation=Confirmed&#10;shipment_status=IN_TRANSIT"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="pickup_confirmation_channel" operation="Equals">
+                <focus-ctd-cond-val value="Carrier_Webhook"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="pickup_confirmation" operation="Equals">
+                <focus-ctd-cond-val value="Confirmed"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="shipment_status" operation="Equals">
+                <focus-ctd-cond-val value="IN_TRANSIT"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test step-17" negative="false" suppressNewLine="false" triggerType="Test_Steps">
+            <focus-ctd-multiple-template>
+                <focus-ctd-multiple-template-testSteps>
+                    <focus-ctd-template text="Send a carrier webhook pickup confirmation for the shipment, including the carrier tracking number."/>
+                    <focus-ctd-template text="Verify that the OMS accepts the pickup confirmation as Confirmed."/>
+                    <focus-ctd-template text="Verify the shipment status is updated to IN_TRANSIT."/>
+                    <focus-ctd-template text="Verify the carrier tracking number is recorded on the shipment."/>
+                    <focus-ctd-template text="Verify a UTC timestamp of the pickup confirmation is recorded on the shipment."/>
+                    <focus-ctd-template text="Verify an 'OrderShipped' event is published to the Kafka topic 'oms.shipment.events.v1'."/>
+                </focus-ctd-multiple-template-testSteps>
+                <focus-ctd-multiple-template-expectedResults>
+                    <focus-ctd-template text="The carrier webhook message is received by the OMS."/>
+                    <focus-ctd-template text="The pickup confirmation is accepted as Confirmed."/>
+                    <focus-ctd-template text="The shipment status reads IN_TRANSIT."/>
+                    <focus-ctd-template text="The carrier tracking number from the webhook is stored on the shipment."/>
+                    <focus-ctd-template text="A UTC timestamp is stored on the shipment."/>
+                    <focus-ctd-template text="An 'OrderShipped' event is present on topic 'oms.shipment.events.v1'."/>
+                </focus-ctd-multiple-template-expectedResults>
+                <focus-ctd-multiple-template-additionalInfo/>
+            </focus-ctd-multiple-template>
+            <focus-ctd-cond attribute="pickup_confirmation_channel" operation="Equals">
+                <focus-ctd-cond-val value="Carrier_Webhook"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="pickup_confirmation" operation="Equals">
+                <focus-ctd-cond-val value="Confirmed"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="shipment_status" operation="Equals">
+                <focus-ctd-cond-val value="IN_TRANSIT"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test case id-18" negative="false" suppressNewLine="false" triggerType="TEST_CASE_ID">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="TC-DEFAUL-0P4R7GGG"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="pickup_confirmation_channel" operation="Equals">
+                <focus-ctd-cond-val value="EDI_214"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="pickup_confirmation" operation="Equals">
+                <focus-ctd-cond-val value="Not_Confirmed"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="testcase-18" negative="false" suppressNewLine="false" triggerType="Test_Case_Name">
+            <requirement ID="OMS-005"/>
+            <focus-ctd-single-template>
+                <focus-ctd-template text="OMS-005 Not confirmed pickup via EDI_214 does not transition shipment to IN_TRANSIT"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="pickup_confirmation_channel" operation="Equals">
+                <focus-ctd-cond-val value="EDI_214"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="pickup_confirmation" operation="Equals">
+                <focus-ctd-cond-val value="Not_Confirmed"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test case description-18" negative="false" suppressNewLine="false" triggerType="Test_Case_Description">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="Verifies that when the carrier pickup confirmation is Not_Confirmed, the OMS does not move the shipment to IN_TRANSIT and does not publish an OrderShipped event."/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="pickup_confirmation_channel" operation="Equals">
+                <focus-ctd-cond-val value="EDI_214"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="pickup_confirmation" operation="Equals">
+                <focus-ctd-cond-val value="Not_Confirmed"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="pre requisite-18" negative="false" suppressNewLine="false" triggerType="Preconditions">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="System under test is accessible&#10;A shipment exists in the OMS awaiting carrier pickup&#10;The Kafka topic 'oms.shipment.events.v1' is available for monitoring"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="pickup_confirmation_channel" operation="Equals">
+                <focus-ctd-cond-val value="EDI_214"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="pickup_confirmation" operation="Equals">
+                <focus-ctd-cond-val value="Not_Confirmed"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test data-18" negative="false" suppressNewLine="false" triggerType="Test_Data">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="pickup_confirmation_channel=EDI_214&#10;pickup_confirmation=Not_Confirmed"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="pickup_confirmation_channel" operation="Equals">
+                <focus-ctd-cond-val value="EDI_214"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="pickup_confirmation" operation="Equals">
+                <focus-ctd-cond-val value="Not_Confirmed"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test step-18" negative="false" suppressNewLine="false" triggerType="Test_Steps">
+            <focus-ctd-multiple-template>
+                <focus-ctd-multiple-template-testSteps>
+                    <focus-ctd-template text="Send an EDI 214 message to the OMS that does not confirm carrier pickup for the shipment."/>
+                    <focus-ctd-template text="Verify the OMS does not accept the message as a pickup confirmation."/>
+                    <focus-ctd-template text="Verify the shipment status is not changed to IN_TRANSIT."/>
+                    <focus-ctd-template text="Verify no 'OrderShipped' event is published to the Kafka topic 'oms.shipment.events.v1'."/>
+                    <focus-ctd-template text="Verify the validation message shown to the user or system."/>
+                </focus-ctd-multiple-template-testSteps>
+                <focus-ctd-multiple-template-expectedResults>
+                    <focus-ctd-template text="The OMS receives the EDI 214 message."/>
+                    <focus-ctd-template text="The pickup confirmation is rejected as Not_Confirmed and no transition occurs."/>
+                    <focus-ctd-template text="The shipment status is not IN_TRANSIT."/>
+                    <focus-ctd-template text="No 'OrderShipped' event is present on topic 'oms.shipment.events.v1'."/>
+                    <focus-ctd-template text="The step completes as expected."/>
+                </focus-ctd-multiple-template-expectedResults>
+                <focus-ctd-multiple-template-additionalInfo/>
+            </focus-ctd-multiple-template>
+            <focus-ctd-cond attribute="pickup_confirmation_channel" operation="Equals">
+                <focus-ctd-cond-val value="EDI_214"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="pickup_confirmation" operation="Equals">
+                <focus-ctd-cond-val value="Not_Confirmed"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test case id-19" negative="false" suppressNewLine="false" triggerType="TEST_CASE_ID">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="TC-DEFAUL-KS2Y0176"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="pickup_confirmation_channel" operation="Equals">
+                <focus-ctd-cond-val value="Carrier_Webhook"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="pickup_confirmation" operation="Equals">
+                <focus-ctd-cond-val value="Confirmed"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="shipment_status" operation="Equals">
+                <focus-ctd-cond-val value="Not_In_Transit"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="testcase-19" negative="false" suppressNewLine="false" triggerType="Test_Case_Name">
+            <requirement ID="OMS-005"/>
+            <focus-ctd-single-template>
+                <focus-ctd-template text="OMS-005 Confirmed pickup via Carrier_Webhook where shipment is Not_In_Transit fails the IN_TRANSIT transition"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="pickup_confirmation_channel" operation="Equals">
+                <focus-ctd-cond-val value="Carrier_Webhook"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="pickup_confirmation" operation="Equals">
+                <focus-ctd-cond-val value="Confirmed"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="shipment_status" operation="Equals">
+                <focus-ctd-cond-val value="Not_In_Transit"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test case description-19" negative="false" suppressNewLine="false" triggerType="Test_Case_Description">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="Verifies that a confirmed carrier webhook pickup does not result in a shipment status other than IN_TRANSIT, i.e. the Not_In_Transit outcome is detected as a failed transition."/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="pickup_confirmation_channel" operation="Equals">
+                <focus-ctd-cond-val value="Carrier_Webhook"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="pickup_confirmation" operation="Equals">
+                <focus-ctd-cond-val value="Confirmed"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="shipment_status" operation="Equals">
+                <focus-ctd-cond-val value="Not_In_Transit"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="pre requisite-19" negative="false" suppressNewLine="false" triggerType="Preconditions">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="System under test is accessible&#10;A shipment exists in the OMS awaiting carrier pickup&#10;The carrier webhook endpoint is configured to send pickup confirmations to the OMS&#10;The Kafka topic 'oms.shipment.events.v1' is available for monitoring"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="pickup_confirmation_channel" operation="Equals">
+                <focus-ctd-cond-val value="Carrier_Webhook"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="pickup_confirmation" operation="Equals">
+                <focus-ctd-cond-val value="Confirmed"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="shipment_status" operation="Equals">
+                <focus-ctd-cond-val value="Not_In_Transit"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test data-19" negative="false" suppressNewLine="false" triggerType="Test_Data">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="pickup_confirmation_channel=Carrier_Webhook&#10;pickup_confirmation=Confirmed&#10;shipment_status=Not_In_Transit"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="pickup_confirmation_channel" operation="Equals">
+                <focus-ctd-cond-val value="Carrier_Webhook"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="pickup_confirmation" operation="Equals">
+                <focus-ctd-cond-val value="Confirmed"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="shipment_status" operation="Equals">
+                <focus-ctd-cond-val value="Not_In_Transit"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test step-19" negative="false" suppressNewLine="false" triggerType="Test_Steps">
+            <focus-ctd-multiple-template>
+                <focus-ctd-multiple-template-testSteps>
+                    <focus-ctd-template text="Send a carrier webhook pickup confirmation for the shipment."/>
+                    <focus-ctd-template text="Verify that the pickup confirmation is accepted as Confirmed."/>
+                    <focus-ctd-template text="Verify the shipment status after processing."/>
+                    <focus-ctd-template text="Verify the validation message shown to the user or system."/>
+                </focus-ctd-multiple-template-testSteps>
+                <focus-ctd-multiple-template-expectedResults>
+                    <focus-ctd-template text="The carrier webhook message is received by the OMS."/>
+                    <focus-ctd-template text="The pickup confirmation is recorded as Confirmed."/>
+                    <focus-ctd-template text="The shipment status is not IN_TRANSIT, so the transition requirement is not met."/>
+                    <focus-ctd-template text="The step completes as expected."/>
+                </focus-ctd-multiple-template-expectedResults>
+                <focus-ctd-multiple-template-additionalInfo/>
+            </focus-ctd-multiple-template>
+            <focus-ctd-cond attribute="pickup_confirmation_channel" operation="Equals">
+                <focus-ctd-cond-val value="Carrier_Webhook"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="pickup_confirmation" operation="Equals">
+                <focus-ctd-cond-val value="Confirmed"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="shipment_status" operation="Equals">
+                <focus-ctd-cond-val value="Not_In_Transit"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test case id-20" negative="false" suppressNewLine="false" triggerType="TEST_CASE_ID">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="TC-DEFAUL-BJMOIE2T"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="shipment_status" operation="Equals">
+                <focus-ctd-cond-val value="DELIVERY_EXCEPTION"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="carrier_scan_gap" operation="Equals">
+                <focus-ctd-cond-val value="More_Than_48_Hours"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="investigation_ticket" operation="Equals">
+                <focus-ctd-cond-val value="Created"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="testcase-20" negative="false" suppressNewLine="false" triggerType="Test_Case_Name">
+            <requirement ID="OMS-006"/>
+            <focus-ctd-single-template>
+                <focus-ctd-template text="OMS-006 Delivery exception beyond 48 hours without carrier scan creates high-priority ticket"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="shipment_status" operation="Equals">
+                <focus-ctd-cond-val value="DELIVERY_EXCEPTION"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="carrier_scan_gap" operation="Equals">
+                <focus-ctd-cond-val value="More_Than_48_Hours"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="investigation_ticket" operation="Equals">
+                <focus-ctd-cond-val value="Created"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test case description-20" negative="false" suppressNewLine="false" triggerType="Test_Case_Description">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="Verifies that a shipment in DELIVERY_EXCEPTION with more than 48 consecutive hours without a carrier scan automatically produces a high-priority Customer Support investigation ticket containing the order ID, carrier code, and last scan location."/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="shipment_status" operation="Equals">
+                <focus-ctd-cond-val value="DELIVERY_EXCEPTION"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="carrier_scan_gap" operation="Equals">
+                <focus-ctd-cond-val value="More_Than_48_Hours"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="investigation_ticket" operation="Equals">
+                <focus-ctd-cond-val value="Created"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="pre requisite-20" negative="false" suppressNewLine="false" triggerType="Preconditions">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="OMS is operational and the Customer Support queue is accessible&#10;A shipment with an associated order ID and carrier code exists in the OMS&#10;The shipment has a recorded last carrier scan location"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="shipment_status" operation="Equals">
+                <focus-ctd-cond-val value="DELIVERY_EXCEPTION"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="carrier_scan_gap" operation="Equals">
+                <focus-ctd-cond-val value="More_Than_48_Hours"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="investigation_ticket" operation="Equals">
+                <focus-ctd-cond-val value="Created"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test data-20" negative="false" suppressNewLine="false" triggerType="Test_Data">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="shipment_status=DELIVERY_EXCEPTION&#10;carrier_scan_gap=More_Than_48_Hours&#10;investigation_ticket=Created"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="shipment_status" operation="Equals">
+                <focus-ctd-cond-val value="DELIVERY_EXCEPTION"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="carrier_scan_gap" operation="Equals">
+                <focus-ctd-cond-val value="More_Than_48_Hours"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="investigation_ticket" operation="Equals">
+                <focus-ctd-cond-val value="Created"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test step-20" negative="false" suppressNewLine="false" triggerType="Test_Steps">
+            <focus-ctd-multiple-template>
+                <focus-ctd-multiple-template-testSteps>
+                    <focus-ctd-template text="Set the shipment to DELIVERY_EXCEPTION status and confirm the shipment status in the OMS."/>
+                    <focus-ctd-template text="Allow the shipment to remain without a subsequent carrier scan for more than 48 consecutive hours."/>
+                    <focus-ctd-template text="Open the Customer Support queue and locate the investigation ticket for the shipment's order."/>
+                </focus-ctd-multiple-template-testSteps>
+                <focus-ctd-multiple-template-expectedResults>
+                    <focus-ctd-template text="The shipment status displays DELIVERY_EXCEPTION."/>
+                    <focus-ctd-template text="The OMS records no subsequent carrier scan for more than 48 consecutive hours after the exception."/>
+                    <focus-ctd-template text="The OMS automatically creates a high-priority investigation ticket in the Customer Support queue containing the order ID, carrier code, and last scan location. Ticket"/>
+                </focus-ctd-multiple-template-expectedResults>
+                <focus-ctd-multiple-template-additionalInfo/>
+            </focus-ctd-multiple-template>
+            <focus-ctd-cond attribute="shipment_status" operation="Equals">
+                <focus-ctd-cond-val value="DELIVERY_EXCEPTION"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="carrier_scan_gap" operation="Equals">
+                <focus-ctd-cond-val value="More_Than_48_Hours"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="investigation_ticket" operation="Equals">
+                <focus-ctd-cond-val value="Created"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test case id-21" negative="false" suppressNewLine="false" triggerType="TEST_CASE_ID">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="TC-DEFAUL-SO6SIDX5"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="shipment_status" operation="Equals">
+                <focus-ctd-cond-val value="Not_DELIVERY_EXCEPTION"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="testcase-21" negative="false" suppressNewLine="false" triggerType="Test_Case_Name">
+            <requirement ID="OMS-006"/>
+            <focus-ctd-single-template>
+                <focus-ctd-template text="OMS-006 Shipment not in delivery exception does not create investigation ticket"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="shipment_status" operation="Equals">
+                <focus-ctd-cond-val value="Not_DELIVERY_EXCEPTION"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test case description-21" negative="false" suppressNewLine="false" triggerType="Test_Case_Description">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="Verifies that when a shipment is not in DELIVERY_EXCEPTION status, no investigation ticket is created in the Customer Support queue."/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="shipment_status" operation="Equals">
+                <focus-ctd-cond-val value="Not_DELIVERY_EXCEPTION"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="pre requisite-21" negative="false" suppressNewLine="false" triggerType="Preconditions">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="OMS is operational and the Customer Support queue is accessible&#10;A shipment with an associated order ID and carrier code exists in the OMS"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="shipment_status" operation="Equals">
+                <focus-ctd-cond-val value="Not_DELIVERY_EXCEPTION"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test data-21" negative="false" suppressNewLine="false" triggerType="Test_Data">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="shipment_status=Not_DELIVERY_EXCEPTION"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="shipment_status" operation="Equals">
+                <focus-ctd-cond-val value="Not_DELIVERY_EXCEPTION"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test step-21" negative="false" suppressNewLine="false" triggerType="Test_Steps">
+            <focus-ctd-multiple-template>
+                <focus-ctd-multiple-template-testSteps>
+                    <focus-ctd-template text="Set the shipment to a status other than DELIVERY_EXCEPTION and confirm the shipment status in the OMS."/>
+                    <focus-ctd-template text="Allow the time elapsed without a carrier scan to pass 48 consecutive hours."/>
+                    <focus-ctd-template text="Open the Customer Support queue and search for an investigation ticket for the shipment's order."/>
+                </focus-ctd-multiple-template-testSteps>
+                <focus-ctd-multiple-template-expectedResults>
+                    <focus-ctd-template text="The shipment status displays a status other than DELIVERY_EXCEPTION."/>
+                    <focus-ctd-template text="The OMS does not evaluate the shipment against the DELIVERY_EXCEPTION rule and takes no ticket action."/>
+                    <focus-ctd-template text="No investigation ticket is created in the Customer Support queue for the shipment."/>
+                </focus-ctd-multiple-template-expectedResults>
+                <focus-ctd-multiple-template-additionalInfo/>
+            </focus-ctd-multiple-template>
+            <focus-ctd-cond attribute="shipment_status" operation="Equals">
+                <focus-ctd-cond-val value="Not_DELIVERY_EXCEPTION"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test case id-22" negative="false" suppressNewLine="false" triggerType="TEST_CASE_ID">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="TC-DEFAUL-U6S81P9N"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="shipment_status" operation="Equals">
+                <focus-ctd-cond-val value="DELIVERY_EXCEPTION"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="carrier_scan_gap" operation="Equals">
+                <focus-ctd-cond-val value="More_Than_48_Hours"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="investigation_ticket" operation="Equals">
+                <focus-ctd-cond-val value="Not_Created"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="testcase-22" negative="false" suppressNewLine="false" triggerType="Test_Case_Name">
+            <requirement ID="OMS-006"/>
+            <focus-ctd-single-template>
+                <focus-ctd-template text="OMS-006 Ticket not created when delivery exception exceeds 48 hours without ticket generation"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="shipment_status" operation="Equals">
+                <focus-ctd-cond-val value="DELIVERY_EXCEPTION"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="carrier_scan_gap" operation="Equals">
+                <focus-ctd-cond-val value="More_Than_48_Hours"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="investigation_ticket" operation="Equals">
+                <focus-ctd-cond-val value="Not_Created"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test case description-22" negative="false" suppressNewLine="false" triggerType="Test_Case_Description">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="Verifies the error scenario in which a shipment in DELIVERY_EXCEPTION beyond 48 hours without a carrier scan does not result in an investigation ticket being created."/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="shipment_status" operation="Equals">
+                <focus-ctd-cond-val value="DELIVERY_EXCEPTION"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="carrier_scan_gap" operation="Equals">
+                <focus-ctd-cond-val value="More_Than_48_Hours"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="investigation_ticket" operation="Equals">
+                <focus-ctd-cond-val value="Not_Created"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="pre requisite-22" negative="false" suppressNewLine="false" triggerType="Preconditions">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="OMS is operational and the Customer Support queue is accessible&#10;A shipment with an associated order ID and carrier code exists in the OMS&#10;The shipment has a recorded last carrier scan location"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="shipment_status" operation="Equals">
+                <focus-ctd-cond-val value="DELIVERY_EXCEPTION"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="carrier_scan_gap" operation="Equals">
+                <focus-ctd-cond-val value="More_Than_48_Hours"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="investigation_ticket" operation="Equals">
+                <focus-ctd-cond-val value="Not_Created"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test data-22" negative="false" suppressNewLine="false" triggerType="Test_Data">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="shipment_status=DELIVERY_EXCEPTION&#10;carrier_scan_gap=More_Than_48_Hours&#10;investigation_ticket=Not_Created"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="shipment_status" operation="Equals">
+                <focus-ctd-cond-val value="DELIVERY_EXCEPTION"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="carrier_scan_gap" operation="Equals">
+                <focus-ctd-cond-val value="More_Than_48_Hours"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="investigation_ticket" operation="Equals">
+                <focus-ctd-cond-val value="Not_Created"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test step-22" negative="false" suppressNewLine="false" triggerType="Test_Steps">
+            <focus-ctd-multiple-template>
+                <focus-ctd-multiple-template-testSteps>
+                    <focus-ctd-template text="Set the shipment to DELIVERY_EXCEPTION status and confirm the shipment status in the OMS."/>
+                    <focus-ctd-template text="Allow the shipment to remain without a subsequent carrier scan for more than 48 consecutive hours."/>
+                    <focus-ctd-template text="Open the Customer Support queue and search for an investigation ticket for the shipment's order."/>
+                </focus-ctd-multiple-template-testSteps>
+                <focus-ctd-multiple-template-expectedResults>
+                    <focus-ctd-template text="The shipment status displays DELIVERY_EXCEPTION."/>
+                    <focus-ctd-template text="The OMS records no subsequent carrier scan for more than 48 consecutive hours after the exception."/>
+                    <focus-ctd-template text="No investigation ticket is created in the Customer Support queue, so the required automatic ticket creation is blocked."/>
+                </focus-ctd-multiple-template-expectedResults>
+                <focus-ctd-multiple-template-additionalInfo/>
+            </focus-ctd-multiple-template>
+            <focus-ctd-cond attribute="shipment_status" operation="Equals">
+                <focus-ctd-cond-val value="DELIVERY_EXCEPTION"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="carrier_scan_gap" operation="Equals">
+                <focus-ctd-cond-val value="More_Than_48_Hours"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="investigation_ticket" operation="Equals">
+                <focus-ctd-cond-val value="Not_Created"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test case id-23" negative="false" suppressNewLine="false" triggerType="TEST_CASE_ID">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="TC-DEFAUL-UCDYFGT0"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="shipment_status" operation="Equals">
+                <focus-ctd-cond-val value="DELIVERY_EXCEPTION"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="carrier_scan_gap" operation="Equals">
+                <focus-ctd-cond-val value="Up_To_48_Hours"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="testcase-23" negative="false" suppressNewLine="false" triggerType="Test_Case_Name">
+            <requirement ID="OMS-006"/>
+            <focus-ctd-single-template>
+                <focus-ctd-template text="OMS-006 Delivery exception with carrier scan within 48 hours does not create ticket"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="shipment_status" operation="Equals">
+                <focus-ctd-cond-val value="DELIVERY_EXCEPTION"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="carrier_scan_gap" operation="Equals">
+                <focus-ctd-cond-val value="Up_To_48_Hours"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test case description-23" negative="false" suppressNewLine="false" triggerType="Test_Case_Description">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="Verifies that a shipment in DELIVERY_EXCEPTION whose carrier scan gap is up to 48 hours does not trigger an investigation ticket."/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="shipment_status" operation="Equals">
+                <focus-ctd-cond-val value="DELIVERY_EXCEPTION"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="carrier_scan_gap" operation="Equals">
+                <focus-ctd-cond-val value="Up_To_48_Hours"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="pre requisite-23" negative="false" suppressNewLine="false" triggerType="Preconditions">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="OMS is operational and the Customer Support queue is accessible&#10;A shipment with an associated order ID and carrier code exists in the OMS&#10;The shipment has a recorded last carrier scan location"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="shipment_status" operation="Equals">
+                <focus-ctd-cond-val value="DELIVERY_EXCEPTION"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="carrier_scan_gap" operation="Equals">
+                <focus-ctd-cond-val value="Up_To_48_Hours"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test data-23" negative="false" suppressNewLine="false" triggerType="Test_Data">
+            <focus-ctd-single-template>
+                <focus-ctd-template text="shipment_status=DELIVERY_EXCEPTION&#10;carrier_scan_gap=Up_To_48_Hours"/>
+            </focus-ctd-single-template>
+            <focus-ctd-cond attribute="shipment_status" operation="Equals">
+                <focus-ctd-cond-val value="DELIVERY_EXCEPTION"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="carrier_scan_gap" operation="Equals">
+                <focus-ctd-cond-val value="Up_To_48_Hours"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+        <focus-ctd-trigger appliance="ALWAYS" is_or="false" name="test step-23" negative="false" suppressNewLine="false" triggerType="Test_Steps">
+            <focus-ctd-multiple-template>
+                <focus-ctd-multiple-template-testSteps>
+                    <focus-ctd-template text="Set the shipment to DELIVERY_EXCEPTION status and confirm the shipment status in the OMS."/>
+                    <focus-ctd-template text="Ensure the time since the last carrier scan is up to 48 consecutive hours, with a subsequent carrier scan recorded within that window."/>
+                    <focus-ctd-template text="Open the Customer Support queue and search for an investigation ticket for the shipment's order."/>
+                </focus-ctd-multiple-template-testSteps>
+                <focus-ctd-multiple-template-expectedResults>
+                    <focus-ctd-template text="The shipment status displays DELIVERY_EXCEPTION."/>
+                    <focus-ctd-template text="The OMS records the carrier scan gap as up to 48 consecutive hours."/>
+                    <focus-ctd-template text="No investigation ticket is created in the Customer Support queue for the shipment."/>
+                </focus-ctd-multiple-template-expectedResults>
+                <focus-ctd-multiple-template-additionalInfo/>
+            </focus-ctd-multiple-template>
+            <focus-ctd-cond attribute="shipment_status" operation="Equals">
+                <focus-ctd-cond-val value="DELIVERY_EXCEPTION"/>
+            </focus-ctd-cond>
+            <focus-ctd-cond attribute="carrier_scan_gap" operation="Equals">
+                <focus-ctd-cond-val value="Up_To_48_Hours"/>
+            </focus-ctd-cond>
+        </focus-ctd-trigger>
+    </focus-ctd-decoration>
+    <defaultParentDetails parentDetailsApplicationName="" parentDetailsFunctionality="" parentDetailsModel="" parentDetailsModelTag="" parentDetailsPortfolio="" parentDetailsTenantId="" parentDetailsUsername=""/>
+    <deactivates/>
+    <attrs-to-delete/>
+    <pool_comments/>
+    <db-dependencies/>
+    <focus-ctd-model-sync>
+        <focus-ctd-model-sync-mult/>
+        <focus-ctd-model-sync-na/>
+    </focus-ctd-model-sync>
+</focus-model>
